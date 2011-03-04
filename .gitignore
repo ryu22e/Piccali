@@ -1,0 +1,13 @@
+#Xcode 
+build/*
+*.mode1*
+*.pbxuser
+
+#SVN 
+.svn/
+
+#MacOS 
+.DS_Store
+
+#Windows 
+Thumbs.db
