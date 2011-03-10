@@ -34,8 +34,9 @@
     }
     return nil;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    // 初期化処理
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (t_switch == nil) {
         t_switch = [[[UISwitch alloc] initWithFrame:CGRectMake(208, 9, 0, 0)] autorelease];
@@ -59,7 +60,6 @@
         [t_usernameField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
          [t_usernameField setText:[userDefaults stringForKey:USERDEFAULTS_TWITPIC_USERNAME]];
     }
-    
     if (w_usernameField == nil) {
         w_usernameField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
         [w_usernameField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
@@ -72,7 +72,6 @@
         [w_usernameField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
         [w_usernameField setText:[userDefaults stringForKey:USERDEFAULTS_WASSR_USERNAME]];
     }
-    
     if (t_passwordField == nil) {
         t_passwordField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
         [t_passwordField setEnablesReturnKeyAutomatically:YES];
@@ -83,7 +82,6 @@
         [t_passwordField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
         [t_passwordField setText:[userDefaults stringForKey:USERDEFAULTS_TWITPIC_PASSWORD]];
     }
-    
     if (w_passwordField == nil) {
         w_passwordField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
         [w_passwordField setEnablesReturnKeyAutomatically:YES];
@@ -151,10 +149,12 @@
 	}
     return cell;
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	// スクロールできるようにセクション数を長めに設定する。
     return 13;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (section == 0) {
 		return 3;
@@ -164,6 +164,7 @@
 		return 0;
 	}
 }
+
 - (void)tableView:(UITableView *)table didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch ([indexPath section]) {
         case 0:
@@ -198,6 +199,7 @@
             break;
     }
 }
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     NSLog(@"textFieldDidEndEditing");
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -216,10 +218,12 @@
     
     [textField setEnabled:NO];
 }
+
 - (IBAction) textFieldEditingDidEndOnExit: (UITextField *)sender {
 	// リターンで編集を終了する。
 	[sender resignFirstResponder];
 }
+
 - (void)switchChanged:(id)sender {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([sender isEqual:t_switch]) {
@@ -229,6 +233,7 @@
         [userDefaults setBool:[w_switch isOn] forKey:USERDEFAULTS_WASSR_ENABLE];
     }
 }
+
 - (BOOL) textFieldEditingDidBegin: (UITextField *)sender {
     NSIndexPath *indexPath;
     if ([sender isEqual:t_usernameField]) {
@@ -246,6 +251,7 @@
 	[configView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 	return YES;
 }
+
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
