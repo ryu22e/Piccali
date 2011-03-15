@@ -7,12 +7,7 @@
 //
 
 #import "SecondViewController.h"
-#define USERDEFAULTS_TWITPIC_ENABLE @"twitpic_enable"
-#define USERDEFAULTS_WASSR_ENABLE @"wassr_enable"
-#define USERDEFAULTS_TWITPIC_USERNAME @"twitpic_username"
-#define USERDEFAULTS_WASSR_USERNAME @"wassr_username"
-#define USERDEFAULTS_TWITPIC_PASSWORD @"twitpic_password"
-#define USERDEFAULTS_WASSR_PASSWORD @"wassr_password"
+#import "PiccaliCommon.h"
 
 @implementation SecondViewController
 @synthesize configView;
