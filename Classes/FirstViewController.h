@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface FirstViewController : UIViewController {
+    @private
+    IBOutlet UITextView *postText;
+    IBOutlet UILabel *postLengthLabel;
+    IBOutlet UIButton *cancelButton;
+    IBOutlet UIButton *postButton;
+    IBOutlet UIImageView *imageView;
 }
-
+@property (nonatomic, retain) UITextView *postText;
+@property (nonatomic, retain) UILabel *postLengthLabel;
+@property (nonatomic, retain) UIButton *cancelButton;
+@property (nonatomic, retain) UIButton *postButton;
+@property (nonatomic, retain) UIImageView *imageView;
 @end
