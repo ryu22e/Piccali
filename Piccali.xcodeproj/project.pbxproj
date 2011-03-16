@@ -35,6 +35,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		856A9FBF13213524008E0ADB /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		856A9FC013213524008E0ADB /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		85EF67AE132E6EC400DA7BB6 /* PiccaliCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliCommon.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Piccali-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Piccali-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +60,7 @@
 				856A9FBF13213524008E0ADB /* SecondViewController.h */,
 				856A9FC013213524008E0ADB /* SecondViewController.m */,
 				28216C960DB411BC00E5133A /* FirstViewController.m */,
+				85EF67AE132E6EC400DA7BB6 /* PiccaliCommon.h */,
 				1D3623240D0F684500981E51 /* PiccaliAppDelegate.h */,
 				1D3623250D0F684500981E51 /* PiccaliAppDelegate.m */,
 			);
@@ -197,7 +199,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Piccali_Prefix.pch;
 				INFOPLIST_FILE = "Piccali-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = Piccali;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -209,7 +213,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Piccali_Prefix.pch;
 				INFOPLIST_FILE = "Piccali-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = Piccali;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
