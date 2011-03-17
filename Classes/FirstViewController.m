@@ -14,6 +14,7 @@
 @synthesize postLengthLabel;
 @synthesize cancelButton;
 @synthesize postButton;
+@synthesize cameraButton;
 @synthesize imageView;
 
 - (NSInteger) getMaxLength {
@@ -63,6 +64,31 @@
 
 - (IBAction)postClicked:(id)sender {
     
+}
+
+- (IBAction)cameraOrLibraryClicked:(id)sender {
+    UIImagePickerControllerSourceType sourceType = 0;
+    if (sender == cameraButton) {
+        sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    //イメージピッカーを表示する(カメラ or ライブラリの起動)
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.sourceType = sourceType;
+        imagePicker.delegate = self;
+        [self presentModalViewController:imagePicker animated:YES];
+        [imagePicker release];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)img editingInfo:(NSDictionary *)editInfo
+{
+    [self dismissModalViewControllerAnimated:YES];
+    // TODO UIImageのサイズを変更する。
+    imageView.image = [img retain];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -8,17 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController {
+@interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
     @private
     IBOutlet UITextView *postText;
     IBOutlet UILabel *postLengthLabel;
     IBOutlet UIButton *cancelButton;
     IBOutlet UIButton *postButton;
+    IBOutlet UIButton *cameraButton;
     IBOutlet UIImageView *imageView;
 }
 @property (nonatomic, retain) UITextView *postText;
 @property (nonatomic, retain) UILabel *postLengthLabel;
 @property (nonatomic, retain) UIButton *cancelButton;
 @property (nonatomic, retain) UIButton *postButton;
+@property (nonatomic, retain) UIButton *cameraButton;
 @property (nonatomic, retain) UIImageView *imageView;
 @end
