@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController {
+@interface SecondViewController : UIViewController <UITextFieldDelegate> {
 	@private
 	IBOutlet UITableView *configView;
 	UISwitch *t_switch;
@@ -17,6 +17,7 @@
 	UISwitch *w_switch;
 	UITextField *w_usernameField;
 	UITextField *w_passwordField;
+    UITextField *imageSizeField;
 }
 @property(nonatomic, retain) UITableView *configView;
 @property(nonatomic, retain) UISwitch *t_switch;
@@ -25,4 +26,5 @@
 @property(nonatomic, retain) UITextField *w_usernameField;
 @property(nonatomic, retain) UITextField *w_passwordField;
 @property(nonatomic, retain) UISwitch *w_switch;
+@property(nonatomic, retain) UITextField *imageSizeField;
 @end

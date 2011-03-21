@@ -30,6 +30,15 @@
     return maxLength;
 }
 
+- (NSInteger) getImageSize {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger imageSize = [userDefaults integerForKey:USERDEFAULTS_IMAGE_SIZE];
+    if (imageSize <= 0) {
+        imageSize = DEFAULT_IMAGE_SIZE;
+    }
+    return imageSize;
+}
+
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
 	// リターンで編集を終了する。
     if ([text isEqualToString:@"\n"]) {
@@ -87,8 +96,17 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)img editingInfo:(NSDictionary *)editInfo
 {
     [self dismissModalViewControllerAnimated:YES];
-    // TODO UIImageのサイズを変更する。
-    imageView.image = [img retain];
+    
+    // UIImageのサイズを変更する。
+    UIImage *image = img;
+    NSInteger imageSize = [self getImageSize];
+    CGSize size = CGSizeMake(imageSize, imageSize);
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    imageView.image = resizedImage;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

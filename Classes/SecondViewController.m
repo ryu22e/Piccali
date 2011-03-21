@@ -17,6 +17,7 @@
 @synthesize w_switch;
 @synthesize w_usernameField;
 @synthesize w_passwordField;
+@synthesize imageSizeField;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch(section) {
@@ -25,6 +26,9 @@
             break;
         case 1: 
             return @"Wassr";
+            break;
+        case 2:
+            return @"画像サイズ";
             break;
     }
     return nil;
@@ -87,6 +91,22 @@
         [w_passwordField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
         [w_passwordField setText:[userDefaults stringForKey:USERDEFAULTS_WASSR_PASSWORD]];
     }
+    if (imageSizeField == nil) {
+        imageSizeField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
+        [imageSizeField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+        [imageSizeField setAutocorrectionType:UITextAutocorrectionTypeNo];
+        [imageSizeField setEnablesReturnKeyAutomatically:YES];
+        [imageSizeField setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+        [imageSizeField addTarget:self action:@selector(textFieldEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
+        [imageSizeField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
+        [imageSizeField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
+        imageSizeField.delegate = self;
+        NSString *size = [userDefaults stringForKey:USERDEFAULTS_IMAGE_SIZE];
+        if (size == nil || [size length] <= 0) {
+            size = [[NSString alloc] initWithFormat:@"%d",DEFAULT_IMAGE_SIZE];;
+        }
+        [imageSizeField setText:size];
+    }
 
         
     static NSString *CellIdentifier = @"Cell";
@@ -96,17 +116,22 @@
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 		[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-	if ([indexPath section] < 2) {
+	if ([indexPath section] < 3) {
 		switch ([indexPath row]) {
 	        case 0: {
-				[[cell textLabel] setText:NSLocalizedString(@"使う", nil)];
 				switch ([indexPath section]) {
 					case 0:
+                        [[cell textLabel] setText:NSLocalizedString(@"使う", nil)];
 						[cell addSubview:t_switch];
 						break;
 					case 1:
+                        [[cell textLabel] setText:NSLocalizedString(@"使う", nil)];
 						[cell addSubview:w_switch];
 						break;
+                    case 2:
+                        [[cell textLabel] setText:NSLocalizedString(@"最大幅/高さ", nil)];
+                        [cell addSubview:imageSizeField];
+                        break;
 					default:
 						break;
 				}
@@ -155,6 +180,8 @@
 		return 3;
 	} else if (section == 1) {
 		return 3;
+    } else if (section == 2) {
+        return 1;
 	} else {
 		return 0;
 	}
@@ -190,6 +217,16 @@
                     break;
             }
             break;
+        case 2:
+            switch ([indexPath row]) {
+                case 0:
+                    [imageSizeField setEnabled:YES];
+                    [imageSizeField becomeFirstResponder];
+                    break;
+                default:
+                    break;
+            }
+            break;
         default:
             break;
     }
@@ -210,41 +247,54 @@
     if ([textField isEqual:w_passwordField]) {
         [userDefaults setObject:[textField text] forKey:USERDEFAULTS_WASSR_PASSWORD];
     }
-    
-    [textField setEnabled:NO];
+    if ([textField isEqual:imageSizeField]) {
+        [userDefaults setObject:[textField text] forKey:USERDEFAULTS_IMAGE_SIZE];
+    }
 }
 
-- (IBAction) textFieldEditingDidEndOnExit: (UITextField *)sender {
+- (IBAction) textFieldEditingDidEndOnExit: (UITextField *)textField {
 	// リターンで編集を終了する。
-	[sender resignFirstResponder];
+	[textField resignFirstResponder];
 }
 
-- (void)switchChanged:(id)sender {
+- (void)switchChanged:(id)textField {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([sender isEqual:t_switch]) {
+    if ([textField isEqual:t_switch]) {
         [userDefaults setBool:[t_switch isOn] forKey:USERDEFAULTS_TWITPIC_ENABLE];
     }
-    if ([sender isEqual:w_switch]) {
+    if ([textField isEqual:w_switch]) {
         [userDefaults setBool:[w_switch isOn] forKey:USERDEFAULTS_WASSR_ENABLE];
     }
 }
 
-- (BOOL) textFieldEditingDidBegin: (UITextField *)sender {
+- (BOOL) textFieldEditingDidBegin: (UITextField *)textField {
     NSIndexPath *indexPath;
-    if ([sender isEqual:t_usernameField]) {
+    if ([textField isEqual:t_usernameField]) {
         indexPath = [NSIndexPath indexPathForRow:1 inSection:0];  
     }
-    if ([sender isEqual:t_passwordField]) {
+    if ([textField isEqual:t_passwordField]) {
         indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
     }
-    if ([sender isEqual:w_usernameField]) {
+    if ([textField isEqual:w_usernameField]) {
         indexPath = [NSIndexPath indexPathForRow:1 inSection:1];
     }
-    if ([sender isEqual:w_passwordField]) {
+    if ([textField isEqual:w_passwordField]) {
         indexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+    }
+    if ([textField isEqual:imageSizeField]) {
+        indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
     }
 	[configView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 	return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    NSRange match = [textField.text rangeOfString:REGEXP_IMAGE_SIZE options:NSRegularExpressionSearch];
+    if (match.location != NSNotFound) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
