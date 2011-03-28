@@ -76,8 +76,6 @@
     NSURL *url;
     if ([self hasTargetChannel]) {
         // チャンネルに投稿する。
-//        url = [NSURL URLWithString:[NSString stringWithFormat:WASSR_CHANNEL_API_URL, @"kdiwa"]];
-//        NSLog(@"targetChannelName: %@", targetChannelName);
         NSString *targetChannelName = [targetChannel objectForKey:@"name_en"];
         url = [NSURL URLWithString:[NSString stringWithFormat:WASSR_CHANNEL_API_URL, targetChannelName]];
         source = nil;
