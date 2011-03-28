@@ -60,6 +60,7 @@
 		85DE4CC5133792A500E29B2B /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DE4CBC133792A500E29B2B /* ASINetworkQueue.m */; };
 		85DE4CC8133792C700E29B2B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DE4CC7133792C700E29B2B /* Reachability.m */; };
 		85DE4CCA133794CC00E29B2B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DE4CC9133794CB00E29B2B /* libz.dylib */; };
+		85EA473B1340C20500F20B8B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 85EA47331340BF7E00F20B8B /* Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +172,7 @@
 		85DE4CC6133792C700E29B2B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		85DE4CC7133792C700E29B2B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		85DE4CC9133794CB00E29B2B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		85EA47331340BF7E00F20B8B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		85EF67AE132E6EC400DA7BB6 /* PiccaliCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliCommon.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Piccali-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Piccali-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,6 +225,7 @@
 		29B97314FDCFA39411CA2CEA /* Piccali */ = {
 			isa = PBXGroup;
 			children = (
+				85EA47331340BF7E00F20B8B /* Icon.png */,
 				8577099A1338D92E00312C29 /* libOAuth.a */,
 				85D745F81337B3A600145F3B /* libxml2.dylib */,
 				85DE4CC9133794CB00E29B2B /* libz.dylib */,
@@ -430,6 +433,7 @@
 				2840D7CE1179279E00D7F93C /* FirstView.xib in Resources */,
 				857709941338D41700312C29 /* OAuthConsumer in Resources */,
 				85A1FCFF133E241A0095B745 /* ChannelViewController.xib in Resources */,
+				85EA473B1340C20500F20B8B /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
