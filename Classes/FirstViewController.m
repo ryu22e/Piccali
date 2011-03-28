@@ -25,8 +25,8 @@
 - (NSInteger) getMaxLength {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSInteger maxLength;
-    if ([userDefaults boolForKey:USERDEFAULTS_TWITPIC_ENABLE]) {
-        maxLength = MAX_LENGTH_TWITPIC;
+    if ([userDefaults boolForKey:USERDEFAULTS_TWITTER_ENABLE]) {
+        maxLength = MAX_LENGTH_TWITTER;
     } else if ([userDefaults boolForKey:USERDEFAULTS_WASSR_ENABLE]) {
         maxLength = MAX_LENGTH_WASSR;
     } else {
@@ -44,16 +44,16 @@
     return imageSize;
 }
 
-- (void) postToTwitpic {
-//    NSURL *url = [NSURL URLWithString:TWITPIC_API_URL];
+- (void) postToTwitter {
+//    NSURL *url = [NSURL URLWithString:TWITTER_API_URL];
 //    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest requestWithURL:url] autorelease];
-//    [urlRequest setHTTPMethod:TWITPIC_API_METHOD];
+//    [urlRequest setHTTPMethod:TWITTER_API_METHOD];
 //    
 //    // パラメータの作成。
 //    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 //    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    NSString *username = [userDefaults stringForKey:USERDEFAULTS_TWITPIC_USERNAME];
-//    NSString *password = [userDefaults stringForKey:USERDEFAULTS_TWITPIC_PASSWORD];
+//    NSString *username = [userDefaults stringForKey:USERDEFAULTS_TWITTER_USERNAME];
+//    NSString *password = [userDefaults stringForKey:USERDEFAULTS_TWITTER_PASSWORD];
 //    NSString *message = postText.text;
 //    [params setObject:username  forKey:@"username"];
 //    [params setObject:password forKey:@"password"];
@@ -165,9 +165,9 @@
     [postButton setEnabled:NO];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults boolForKey:USERDEFAULTS_TWITPIC_ENABLE]) {
-        // TwitPicにpostする。
-        [self postToTwitpic];
+    if ([userDefaults boolForKey:USERDEFAULTS_TWITTER_ENABLE]) {
+        // Twitterにpostする。
+        [self postToTwitter];
     }
     if ([userDefaults boolForKey:USERDEFAULTS_WASSR_ENABLE]) {
         // Wassrにpostする。

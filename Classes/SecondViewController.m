@@ -22,7 +22,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch(section) {
         case 0: 
-            return @"TwitPic";
+            return @"Twitter";
             break;
         case 1: 
             return @"Wassr";
@@ -40,7 +40,7 @@
     if (t_switch == nil) {
         t_switch = [[[UISwitch alloc] initWithFrame:CGRectMake(208, 9, 0, 0)] autorelease];
         [t_switch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-        [t_switch setOn:[userDefaults boolForKey:USERDEFAULTS_TWITPIC_ENABLE] animated:NO];
+        [t_switch setOn:[userDefaults boolForKey:USERDEFAULTS_TWITTER_ENABLE] animated:NO];
     }
     if (w_switch == nil) {
         w_switch = [[[UISwitch alloc] initWithFrame:CGRectMake(208, 9, 0, 0)] autorelease];
@@ -57,7 +57,7 @@
         [t_usernameField addTarget:self action:@selector(textFieldEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [t_usernameField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
         [t_usernameField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
-         [t_usernameField setText:[userDefaults stringForKey:USERDEFAULTS_TWITPIC_USERNAME]];
+         [t_usernameField setText:[userDefaults stringForKey:USERDEFAULTS_TWITTER_USERNAME]];
     }
     if (w_usernameField == nil) {
         w_usernameField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
@@ -79,7 +79,7 @@
         [t_passwordField addTarget:self action:@selector(textFieldEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [t_passwordField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
         [t_passwordField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
-        [t_passwordField setText:[userDefaults stringForKey:USERDEFAULTS_TWITPIC_PASSWORD]];
+        [t_passwordField setText:[userDefaults stringForKey:USERDEFAULTS_TWITTER_PASSWORD]];
     }
     if (w_passwordField == nil) {
         w_passwordField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
@@ -236,13 +236,13 @@
     NSLog(@"textFieldDidEndEditing");
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([textField isEqual:t_usernameField]) {
-        [userDefaults setObject:[textField text] forKey:USERDEFAULTS_TWITPIC_USERNAME];
+        [userDefaults setObject:[textField text] forKey:USERDEFAULTS_TWITTER_USERNAME];
     }
     if ([textField isEqual:w_usernameField]) {
         [userDefaults setObject:[textField text] forKey:USERDEFAULTS_WASSR_USERNAME];
     }
     if ([textField isEqual:t_passwordField]) {
-        [userDefaults setObject:[textField text] forKey:USERDEFAULTS_TWITPIC_PASSWORD];
+        [userDefaults setObject:[textField text] forKey:USERDEFAULTS_TWITTER_PASSWORD];
     }
     if ([textField isEqual:w_passwordField]) {
         [userDefaults setObject:[textField text] forKey:USERDEFAULTS_WASSR_PASSWORD];
@@ -260,7 +260,7 @@
 - (void)switchChanged:(id)textField {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([textField isEqual:t_switch]) {
-        [userDefaults setBool:[t_switch isOn] forKey:USERDEFAULTS_TWITPIC_ENABLE];
+        [userDefaults setBool:[t_switch isOn] forKey:USERDEFAULTS_TWITTER_ENABLE];
     }
     if ([textField isEqual:w_switch]) {
         [userDefaults setBool:[w_switch isOn] forKey:USERDEFAULTS_WASSR_ENABLE];
