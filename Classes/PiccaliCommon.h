@@ -17,3 +17,11 @@
 #define MAX_LENGTH_TWITPIC 140
 #define MAX_LENGTH_WASSR 255
 #define MAX_LENGTH_OTHER 0
+#define TWITPIC_API_KEY @"4fce0ca104faed9553f10acc3b9133f8"
+#define TWITPIC_API_URL @"http://twitpic.com/api/upload"
+#define TWITPIC_API_METHOD @"POST"
+#define WASSR_API_URL @"http://api.wassr.jp/statuses/update.json"
+#define WASSR_CHANNEL_API_URL @"http://api.wassr.jp/channel_message/update.json?name_en=%@"
+#define WASSR_CHANNEL_LIST_API_URL @"http://api.wassr.jp/channel_user/user_list.json?login_id=%@"
+#define WASSR_API_METHOD @"POST"
+#define WASSR_API_SOURCE @"Piccali"
