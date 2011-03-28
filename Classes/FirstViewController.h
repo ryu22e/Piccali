@@ -7,20 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChannelViewControllerDelegate.h"
 
-@interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
+@interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, ChannelViewControllerDelegate>{
     @private
+    IBOutlet UIButton *selectWassrTargetButton;
+    IBOutlet UILabel *wassrTarget;
     IBOutlet UITextView *postText;
     IBOutlet UILabel *postLengthLabel;
     IBOutlet UIButton *cancelButton;
     IBOutlet UIButton *postButton;
     IBOutlet UIButton *cameraButton;
     IBOutlet UIImageView *imageView;
+    NSDictionary *targetChannel;
 }
+@property (nonatomic, retain) UIButton *selectWassrTargetButton;
+@property (nonatomic, retain) UILabel *wassrTarget;
 @property (nonatomic, retain) UITextView *postText;
 @property (nonatomic, retain) UILabel *postLengthLabel;
 @property (nonatomic, retain) UIButton *cancelButton;
 @property (nonatomic, retain) UIButton *postButton;
 @property (nonatomic, retain) UIButton *cameraButton;
 @property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, retain) NSDictionary *targetChannel;
 @end
