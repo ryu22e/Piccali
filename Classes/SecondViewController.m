@@ -8,6 +8,7 @@
 
 #import "SecondViewController.h"
 #import "PiccaliCommon.h"
+#import "AboutCotroller.h"
 
 @implementation SecondViewController
 @synthesize configView;
@@ -18,6 +19,7 @@
 @synthesize w_usernameField;
 @synthesize w_passwordField;
 @synthesize imageSizeField;
+@synthesize aboutController;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch(section) {
@@ -29,6 +31,9 @@
             break;
         case 2:
             return @"画像サイズ";
+            break;
+        case 3:
+            return @"";
             break;
     }
     return nil;
@@ -116,7 +121,7 @@
 		cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
 		[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-	if ([indexPath section] < 3) {
+	if ([indexPath section] < 4) {
 		switch ([indexPath row]) {
 	        case 0: {
 				switch ([indexPath section]) {
@@ -131,6 +136,10 @@
                     case 2:
                         [[cell textLabel] setText:NSLocalizedString(@"最大幅/高さ", nil)];
                         [cell addSubview:imageSizeField];
+                        break;
+                    case 3:
+                        [[cell textLabel] setText:@"About Piccali"];
+                        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                         break;
 					default:
 						break;
@@ -172,7 +181,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	// スクロールできるようにセクション数を長めに設定する。
-    return 13;
+    return 15;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -181,6 +190,8 @@
 	} else if (section == 1) {
 		return 3;
     } else if (section == 2) {
+        return 1;
+    } else if (section == 3) {
         return 1;
 	} else {
 		return 0;
@@ -226,6 +237,12 @@
                 default:
                     break;
             }
+            break;
+        case 3:
+            if (!aboutController) {
+                aboutController = [[AboutCotroller alloc] initWithNibName:@"AboutCotroller" bundle:nil];
+            }
+            [self presentModalViewController:aboutController animated:YES];
             break;
         default:
             break;
@@ -308,11 +325,10 @@
 }
 */
 
-/*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
+//- (void)loadView {
+//    [super loadView];
+//}
 
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -352,6 +368,7 @@
     [w_usernameField release];
     [w_passwordField release];
     [imageSizeField release];
+    [aboutController release];
     [super dealloc];
 }
 

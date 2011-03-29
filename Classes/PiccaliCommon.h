@@ -5,6 +5,8 @@
 //  Created by 筒井 隆次 on 11/03/15.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
+#define PICCALI_VERSION @"1.0.0"
+#define RYU22E_URL @"https://twitter.com/#!/ryu22e"
 #define CONFIG_TWITTER_ENABLE @"config_twitter_enable"
 #define CONFIG_WASSR_ENABLE @"config_wassr_enable"
 #define CONFIG_TWITTER_USERNAME @"config_twitter_username"
