@@ -12,6 +12,10 @@
 #import "ASIFormDataRequest.h"
 
 @implementation FirstViewController
+@synthesize twitterIndicator;
+@synthesize resultPostTwitter;
+@synthesize resultPostWassr;
+@synthesize wassrIndicator;
 @synthesize t_switch;
 @synthesize w_switch;
 @synthesize selectWassrTargetButton;
@@ -82,6 +86,20 @@
     [postLengthLabel setText:[NSString stringWithFormat:@"%d/%d", postTextLength, maxLength]];
 }
 
+- (void)resetTwitterIndicator {
+    [twitterIndicator stopAnimating];
+    [twitterIndicator setHidden:YES];
+    resultPostTwitter.image = nil;
+    [resultPostTwitter setHidden:YES];
+}
+
+- (void)resetWassrIndicator {   
+    [wassrIndicator stopAnimating];
+    [wassrIndicator setHidden:YES];
+    resultPostWassr.image = nil;
+    [resultPostWassr setHidden:YES];
+}
+
 - (void) postToTwitter {
     //    NSURL *url = [NSURL URLWithString:TWITTER_API_URL];
     //    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest requestWithURL:url] autorelease];
@@ -105,6 +123,10 @@
 
 - (void) postToWassr {
     NSLog(@"postToWassr start.");
+    
+    [wassrIndicator startAnimating];
+    [wassrIndicator setHidden:NO];
+    
     NSString *statusOrBody;
     NSString *source;
     NSURL *url;
@@ -147,6 +169,10 @@
     NSLog(@"%@", responseString);
     
     // TODO Twitterへの投稿とWassrへの投稿とで処理を分ける。
+    [wassrIndicator stopAnimating];
+    [wassrIndicator setHidden:YES];
+    resultPostWassr.image =  [UIImage imageNamed:POST_SUCCESS_IMAGE];
+    [resultPostWassr setHidden:NO];
     NSLog(@"postToWassr end.");
 }
 
@@ -155,6 +181,10 @@
     NSLog(@"%@", [error localizedDescription]);
     
     // TODO Twitterへの投稿とWassrへの投稿とで処理を分ける。
+    [wassrIndicator stopAnimating];
+    [wassrIndicator setHidden:YES];
+    resultPostWassr.image =  [UIImage imageNamed:POST_ERROR_IMAGE];
+    [resultPostWassr setHidden:NO];
     NSLog(@"postToWassr end.");
 }
 
@@ -190,6 +220,10 @@
 
 - (IBAction)postClicked:(id)sender {
     NSLog(@"postClicked start.");
+    
+    [self resetTwitterIndicator];
+    [self resetWassrIndicator];
+    
     [postButton setEnabled:NO];
     
     if (t_switch.enabled && [t_switch isOn]) {

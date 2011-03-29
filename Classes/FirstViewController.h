@@ -12,6 +12,10 @@
 
 @interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, ChannelViewControllerDelegate>{
     @private
+    IBOutlet UIImageView *resultPostTwitter;
+    IBOutlet UIActivityIndicatorView *twitterIndicator;
+    IBOutlet UIImageView *resultPostWassr;
+    IBOutlet UIActivityIndicatorView *wassrIndicator;
     IBOutlet UISwitch *t_switch;
     IBOutlet UISwitch *w_switch;
     IBOutlet UIButton *selectWassrTargetButton;
@@ -26,6 +30,10 @@
     UIActionSheet *channelSheet;
     ChannelViewController *channelView;
 }
+@property (nonatomic, retain) UIActivityIndicatorView *twitterIndicator;
+@property (nonatomic, retain) UIImageView *resultPostTwitter;
+@property (nonatomic, retain) UIImageView *resultPostWassr;
+@property (nonatomic, retain) UIActivityIndicatorView *wassrIndicator;
 @property (nonatomic, retain) UISwitch *t_switch;
 @property (nonatomic, retain) UISwitch *w_switch;
 @property (nonatomic, retain) UIButton *selectWassrTargetButton;
