@@ -29,3 +29,5 @@
 #define WASSR_CHANNEL_LIST_API_URL @"http://api.wassr.jp/channel_user/user_list.json?login_id=%@"
 #define WASSR_API_METHOD @"POST"
 #define WASSR_API_SOURCE @"Piccali"
+#define POST_SUCCESS_IMAGE @"post_success.png"
+#define POST_ERROR_IMAGE @"post_error.png"
