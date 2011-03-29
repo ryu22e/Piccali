@@ -16,6 +16,8 @@
 		2840D7CE1179279E00D7F93C /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2840D7CD1179279E00D7F93C /* FirstView.xib */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		851F948F1342096400EF0A00 /* post.png in Resources */ = {isa = PBXBuildFile; fileRef = 851F948E1342096400EF0A00 /* post.png */; };
+		851F949113420A1300EF0A00 /* config.png in Resources */ = {isa = PBXBuildFile; fileRef = 851F949013420A1300EF0A00 /* config.png */; };
 		856A9FC113213524008E0ADB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 856A9FC013213524008E0ADB /* SecondViewController.m */; };
 		857709531338D3FB00312C29 /* XAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 857709511338D3FB00312C29 /* XAuthTwitterEngine.m */; };
 		857709801338D41700312C29 /* ExchangeCredentialsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 857709551338D41700312C29 /* ExchangeCredentialsOperation.m */; };
@@ -79,6 +81,8 @@
 		28A0AB4B0D9B1048005BE974 /* Piccali_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Piccali_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		851F948E1342096400EF0A00 /* post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post.png; sourceTree = "<group>"; };
+		851F949013420A1300EF0A00 /* config.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = config.png; sourceTree = "<group>"; };
 		856A9FBF13213524008E0ADB /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		856A9FC013213524008E0ADB /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		857709501338D3FB00312C29 /* XAuthTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAuthTwitterEngine.h; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				851F949013420A1300EF0A00 /* config.png */,
+				851F948E1342096400EF0A00 /* post.png */,
 				85A1FCFD133E241A0095B745 /* ChannelViewController.xib */,
 				858F933F1341C93E0031615D /* AboutCotroller.xib */,
 				2840D7CD1179279E00D7F93C /* FirstView.xib */,
@@ -443,6 +449,8 @@
 				85A1FCFF133E241A0095B745 /* ChannelViewController.xib in Resources */,
 				85EA473B1340C20500F20B8B /* Icon.png in Resources */,
 				858F93411341C93E0031615D /* AboutCotroller.xib in Resources */,
+				851F948F1342096400EF0A00 /* post.png in Resources */,
+				851F949113420A1300EF0A00 /* config.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
