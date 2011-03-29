@@ -12,6 +12,8 @@
 #import "ASIFormDataRequest.h"
 
 @implementation FirstViewController
+@synthesize t_switch;
+@synthesize w_switch;
 @synthesize selectWassrTargetButton;
 @synthesize wassrTarget;
 @synthesize postText;
@@ -25,11 +27,10 @@
 @synthesize channelView;
 
 - (NSInteger) getMaxLength {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSInteger maxLength;
-    if ([userDefaults boolForKey:USERDEFAULTS_TWITTER_ENABLE]) {
+    if (t_switch.enabled && [t_switch isOn]) {
         maxLength = MAX_LENGTH_TWITTER;
-    } else if ([userDefaults boolForKey:USERDEFAULTS_WASSR_ENABLE]) {
+    } else if (w_switch.enabled && [w_switch isOn]) {
         maxLength = MAX_LENGTH_WASSR;
     } else {
         maxLength = MAX_LENGTH_OTHER;
@@ -39,36 +40,67 @@
 
 - (NSInteger) getImageSize {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSInteger imageSize = [userDefaults integerForKey:USERDEFAULTS_IMAGE_SIZE];
+    NSInteger imageSize = [userDefaults integerForKey:CONFIG_IMAGE_SIZE];
     if (imageSize <= 0) {
         imageSize = DEFAULT_IMAGE_SIZE;
     }
     return imageSize;
 }
 
-- (void) postToTwitter {
-//    NSURL *url = [NSURL URLWithString:TWITTER_API_URL];
-//    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest requestWithURL:url] autorelease];
-//    [urlRequest setHTTPMethod:TWITTER_API_METHOD];
-//    
-//    // パラメータの作成。
-//    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    NSString *username = [userDefaults stringForKey:USERDEFAULTS_TWITTER_USERNAME];
-//    NSString *password = [userDefaults stringForKey:USERDEFAULTS_TWITTER_PASSWORD];
-//    NSString *message = postText.text;
-//    [params setObject:username  forKey:@"username"];
-//    [params setObject:password forKey:@"password"];
-//    [params setObject:message forKey:@"message"];
-//    [params setObject:UIImagePNGRepresentation(imageView.image) forKey:@"media"];
-//    NSMutableData *postBody = [[NSMutableData alloc] init];
-//
-//    [urlRequest setHTTPBody:postBody];
-    
-}
-
 - (BOOL) hasTargetChannel {
     return targetChannel != nil;
+}
+
+- (void)changeStatus {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    // 設定画面でONになっている場合のみスイッチを有効にする。
+    [t_switch setEnabled:[userDefaults boolForKey:CONFIG_TWITTER_ENABLE]];
+    [w_switch setEnabled:[userDefaults boolForKey:CONFIG_WASSR_ENABLE]];
+    
+    // 「Wassr」が有効、かつOnの場合のみ「Wassr投稿先選択」を有効にする。
+    [selectWassrTargetButton setEnabled:(w_switch.enabled && [w_switch isOn])];
+    
+    NSInteger maxLength = [self getMaxLength];
+    NSInteger postTextLength = [[postText text] length];
+    // メッセージを入力している、かつ長さが最大文字列数以内の場合のみキャンセルボタンと投稿ボタンを有効にする。
+    if (0 < postTextLength && postTextLength <= maxLength) {
+        [cancelButton setEnabled:YES];
+        [postButton setEnabled:YES];
+        [postButton setHighlighted:YES];
+    } else {
+        [cancelButton setEnabled:NO];
+        [postButton setEnabled:NO];
+        [postButton setHighlighted:NO];
+    }
+    // 入力された文字列の長さを表示する。
+    if (postTextLength <= maxLength) {
+        // メッセージが最大文字列数を越えている場合は、文字列数を赤字で表示する。
+        postLengthLabel.textColor = [UIColor whiteColor];
+    } else {
+        postLengthLabel.textColor = [UIColor redColor];
+    }
+    [postLengthLabel setText:[NSString stringWithFormat:@"%d/%d", postTextLength, maxLength]];
+}
+
+- (void) postToTwitter {
+    //    NSURL *url = [NSURL URLWithString:TWITTER_API_URL];
+    //    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest requestWithURL:url] autorelease];
+    //    [urlRequest setHTTPMethod:TWITTER_API_METHOD];
+    //    
+    //    // パラメータの作成。
+    //    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    //    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //    NSString *username = [userDefaults stringForKey:CONFIG_TWITTER_USERNAME];
+    //    NSString *password = [userDefaults stringForKey:CONFIG_TWITTER_PASSWORD];
+    //    NSString *message = postText.text;
+    //    [params setObject:username  forKey:@"username"];
+    //    [params setObject:password forKey:@"password"];
+    //    [params setObject:message forKey:@"message"];
+    //    [params setObject:UIImagePNGRepresentation(imageView.image) forKey:@"media"];
+    //    NSMutableData *postBody = [[NSMutableData alloc] init];
+    //
+    //    [urlRequest setHTTPBody:postBody];
+    
 }
 
 - (void) postToWassr {
@@ -91,8 +123,8 @@
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *username = [userDefaults stringForKey:USERDEFAULTS_WASSR_USERNAME];
-    NSString *password = [userDefaults stringForKey:USERDEFAULTS_WASSR_PASSWORD];
+    NSString *username = [userDefaults stringForKey:CONFIG_WASSR_USERNAME];
+    NSString *password = [userDefaults stringForKey:CONFIG_WASSR_PASSWORD];
     
     [request setUsername:username];
     [request setPassword:password];
@@ -126,24 +158,6 @@
     NSLog(@"postToWassr end.");
 }
 
-- (void)changeStatus {
-    NSInteger maxLength = [self getMaxLength];
-    NSInteger postTextLength = [[postText text] length];
-    if (0 < postTextLength && postTextLength <= maxLength) {
-        [cancelButton setEnabled:YES];
-        [postButton setEnabled:YES];
-    } else {
-        [cancelButton setEnabled:NO];
-        [postButton setEnabled:NO];
-    }
-    if (postTextLength <= maxLength) {
-        postLengthLabel.textColor = [UIColor whiteColor];
-    } else {
-        postLengthLabel.textColor = [UIColor redColor];
-    }
-    [postLengthLabel setText:[NSString stringWithFormat:@"%d/%d", postTextLength, maxLength]];
-}
-
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
 	// リターンで編集を終了する。
     if ([text isEqualToString:@"\n"]) {
@@ -157,6 +171,18 @@
     [self changeStatus];
 }
 
+- (IBAction)switchChanged:(id)textField {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([textField isEqual:t_switch]) {
+        [userDefaults setBool:[t_switch isOn] forKey:TWITTER_ENABLE];
+    }
+    if ([textField isEqual:w_switch]) {
+        [userDefaults setBool:[w_switch isOn] forKey:WASSR_ENABLE];
+    }
+    
+    [self changeStatus];
+}
+
 - (IBAction)cancelClicked:(id)sender {
     postText.text = @"";
     [self changeStatus];
@@ -166,12 +192,11 @@
     NSLog(@"postClicked start.");
     [postButton setEnabled:NO];
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults boolForKey:USERDEFAULTS_TWITTER_ENABLE]) {
+    if (t_switch.enabled && [t_switch isOn]) {
         // Twitterにpostする。
         [self postToTwitter];
     }
-    if ([userDefaults boolForKey:USERDEFAULTS_WASSR_ENABLE]) {
+    if (w_switch.enabled && [w_switch isOn]) {
         // Wassrにpostする。
         [self postToWassr];
     }
@@ -255,6 +280,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [t_switch setOn:[userDefaults boolForKey:TWITTER_ENABLE]];
+    [w_switch setOn:[userDefaults boolForKey:WASSR_ENABLE]];
     [super viewWillAppear:animated];
     [self changeStatus];
 }

@@ -12,6 +12,8 @@
 
 @interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, ChannelViewControllerDelegate>{
     @private
+    IBOutlet UISwitch *t_switch;
+    IBOutlet UISwitch *w_switch;
     IBOutlet UIButton *selectWassrTargetButton;
     IBOutlet UILabel *wassrTarget;
     IBOutlet UITextView *postText;
@@ -24,6 +26,8 @@
     UIActionSheet *channelSheet;
     ChannelViewController *channelView;
 }
+@property (nonatomic, retain) UISwitch *t_switch;
+@property (nonatomic, retain) UISwitch *w_switch;
 @property (nonatomic, retain) UIButton *selectWassrTargetButton;
 @property (nonatomic, retain) UILabel *wassrTarget;
 @property (nonatomic, retain) UITextView *postText;

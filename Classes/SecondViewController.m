@@ -40,12 +40,12 @@
     if (t_switch == nil) {
         t_switch = [[[UISwitch alloc] initWithFrame:CGRectMake(208, 9, 0, 0)] autorelease];
         [t_switch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-        [t_switch setOn:[userDefaults boolForKey:USERDEFAULTS_TWITTER_ENABLE] animated:NO];
+        [t_switch setOn:[userDefaults boolForKey:CONFIG_TWITTER_ENABLE] animated:NO];
     }
     if (w_switch == nil) {
         w_switch = [[[UISwitch alloc] initWithFrame:CGRectMake(208, 9, 0, 0)] autorelease];
         [w_switch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-        [w_switch setOn:[userDefaults boolForKey:USERDEFAULTS_WASSR_ENABLE] animated:NO];
+        [w_switch setOn:[userDefaults boolForKey:CONFIG_WASSR_ENABLE] animated:NO];
     }
     if (t_usernameField == nil) {
         t_usernameField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
@@ -57,7 +57,7 @@
         [t_usernameField addTarget:self action:@selector(textFieldEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [t_usernameField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
         [t_usernameField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
-         [t_usernameField setText:[userDefaults stringForKey:USERDEFAULTS_TWITTER_USERNAME]];
+         [t_usernameField setText:[userDefaults stringForKey:CONFIG_TWITTER_USERNAME]];
     }
     if (w_usernameField == nil) {
         w_usernameField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
@@ -69,7 +69,7 @@
         [w_usernameField addTarget:self action:@selector(textFieldEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [w_usernameField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
         [w_usernameField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
-        [w_usernameField setText:[userDefaults stringForKey:USERDEFAULTS_WASSR_USERNAME]];
+        [w_usernameField setText:[userDefaults stringForKey:CONFIG_WASSR_USERNAME]];
     }
     if (t_passwordField == nil) {
         t_passwordField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
@@ -79,7 +79,7 @@
         [t_passwordField addTarget:self action:@selector(textFieldEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [t_passwordField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
         [t_passwordField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
-        [t_passwordField setText:[userDefaults stringForKey:USERDEFAULTS_TWITTER_PASSWORD]];
+        [t_passwordField setText:[userDefaults stringForKey:CONFIG_TWITTER_PASSWORD]];
     }
     if (w_passwordField == nil) {
         w_passwordField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
@@ -89,7 +89,7 @@
         [w_passwordField addTarget:self action:@selector(textFieldEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [w_passwordField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
         [w_passwordField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
-        [w_passwordField setText:[userDefaults stringForKey:USERDEFAULTS_WASSR_PASSWORD]];
+        [w_passwordField setText:[userDefaults stringForKey:CONFIG_WASSR_PASSWORD]];
     }
     if (imageSizeField == nil) {
         imageSizeField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
@@ -101,7 +101,7 @@
         [imageSizeField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
         [imageSizeField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
         imageSizeField.delegate = self;
-        NSString *size = [userDefaults stringForKey:USERDEFAULTS_IMAGE_SIZE];
+        NSString *size = [userDefaults stringForKey:CONFIG_IMAGE_SIZE];
         if (size == nil || [size length] <= 0) {
             size = [[NSString alloc] initWithFormat:@"%d",DEFAULT_IMAGE_SIZE];;
         }
@@ -236,19 +236,19 @@
     NSLog(@"textFieldDidEndEditing");
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([textField isEqual:t_usernameField]) {
-        [userDefaults setObject:[textField text] forKey:USERDEFAULTS_TWITTER_USERNAME];
+        [userDefaults setObject:[textField text] forKey:CONFIG_TWITTER_USERNAME];
     }
     if ([textField isEqual:w_usernameField]) {
-        [userDefaults setObject:[textField text] forKey:USERDEFAULTS_WASSR_USERNAME];
+        [userDefaults setObject:[textField text] forKey:CONFIG_WASSR_USERNAME];
     }
     if ([textField isEqual:t_passwordField]) {
-        [userDefaults setObject:[textField text] forKey:USERDEFAULTS_TWITTER_PASSWORD];
+        [userDefaults setObject:[textField text] forKey:CONFIG_TWITTER_PASSWORD];
     }
     if ([textField isEqual:w_passwordField]) {
-        [userDefaults setObject:[textField text] forKey:USERDEFAULTS_WASSR_PASSWORD];
+        [userDefaults setObject:[textField text] forKey:CONFIG_WASSR_PASSWORD];
     }
     if ([textField isEqual:imageSizeField]) {
-        [userDefaults setObject:[textField text] forKey:USERDEFAULTS_IMAGE_SIZE];
+        [userDefaults setObject:[textField text] forKey:CONFIG_IMAGE_SIZE];
     }
 }
 
@@ -260,10 +260,10 @@
 - (void)switchChanged:(id)textField {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([textField isEqual:t_switch]) {
-        [userDefaults setBool:[t_switch isOn] forKey:USERDEFAULTS_TWITTER_ENABLE];
+        [userDefaults setBool:[t_switch isOn] forKey:CONFIG_TWITTER_ENABLE];
     }
     if ([textField isEqual:w_switch]) {
-        [userDefaults setBool:[w_switch isOn] forKey:USERDEFAULTS_WASSR_ENABLE];
+        [userDefaults setBool:[w_switch isOn] forKey:CONFIG_WASSR_ENABLE];
     }
 }
 
