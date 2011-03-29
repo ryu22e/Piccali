@@ -13,6 +13,7 @@
 
 @implementation ChannelViewController
 @synthesize activityIndicator;
+@synthesize doneButton;
 @synthesize channelPicker;
 @synthesize channelList;
 @synthesize delegate;
@@ -24,6 +25,14 @@
 - (IBAction)doneClicked:(id)sender {
     [delegate channelSelected:self channel:[channelList objectAtIndex:[channelPicker selectedRowInComponent:0]]];
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)clearChannelList {
+    for (int i = 0; i < [channelList count]; i++) {
+        id item = [channelList objectAtIndex:i];
+        [item release];
+    }
+    [channelList removeAllObjects];
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView*)pickerView{
@@ -67,10 +76,23 @@
     [request startSynchronous];
 }
 
+- (void)showErrorDialog {
+    UIAlertView *alert = [[UIAlertView alloc] 
+                          initWithTitle:@"" 
+                          message:@"チャンネル一覧の取得に失敗しました。" 
+                          delegate:nil 
+                          cancelButtonTitle:@"OK" 
+                          otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
+
 - (void)requestFinished:(ASIHTTPRequest *)request {
     NSString *responseString = [request responseString];
     
     NSLog(@"%@", responseString);
+    
+    [self clearChannelList];
     
     NSDictionary *dict = [responseString JSONValue];
     NSArray *channels = [dict objectForKey:@"channels"];
@@ -85,6 +107,7 @@
         channelPicker.delegate = self; 
         channelPicker.dataSource = self;
         [self.view addSubview:channelPicker];
+        [doneButton setEnabled:YES];
     }
     
     [activityIndicator stopAnimating];
@@ -94,16 +117,16 @@
 - (void)requestFailed:(ASIHTTPRequest *)request {
     NSError *error = [request error];
     NSLog(@"%@", [error localizedDescription]);
+    
+    [self showErrorDialog];
+    
     [activityIndicator stopAnimating];
     activityIndicator.hidden = YES;
 }
 
 - (void)dealloc
 {
-    for (int i = 0; i < [channelList count]; i++) {
-        id item = [channelList objectAtIndex:i];
-        [item release];
-    }
+    [self clearChannelList];
     
     [channelList release];
     [channelPicker release];
