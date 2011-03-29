@@ -38,17 +38,17 @@
     // 初期化処理
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (t_switch == nil) {
-        t_switch = [[[UISwitch alloc] initWithFrame:CGRectMake(208, 9, 0, 0)] autorelease];
+        t_switch = [[UISwitch alloc] initWithFrame:CGRectMake(208, 9, 0, 0)];
         [t_switch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
         [t_switch setOn:[userDefaults boolForKey:CONFIG_TWITTER_ENABLE] animated:NO];
     }
     if (w_switch == nil) {
-        w_switch = [[[UISwitch alloc] initWithFrame:CGRectMake(208, 9, 0, 0)] autorelease];
+        w_switch = [[UISwitch alloc] initWithFrame:CGRectMake(208, 9, 0, 0)];
         [w_switch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
         [w_switch setOn:[userDefaults boolForKey:CONFIG_WASSR_ENABLE] animated:NO];
     }
     if (t_usernameField == nil) {
-        t_usernameField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
+        t_usernameField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
         [t_usernameField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
         [t_usernameField setAutocorrectionType:UITextAutocorrectionTypeNo];
         [t_usernameField setEnablesReturnKeyAutomatically:YES];
@@ -60,7 +60,7 @@
          [t_usernameField setText:[userDefaults stringForKey:CONFIG_TWITTER_USERNAME]];
     }
     if (w_usernameField == nil) {
-        w_usernameField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
+        w_usernameField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
         [w_usernameField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
         [w_usernameField setAutocorrectionType:UITextAutocorrectionTypeNo];
         [w_usernameField setEnablesReturnKeyAutomatically:YES];
@@ -72,7 +72,7 @@
         [w_usernameField setText:[userDefaults stringForKey:CONFIG_WASSR_USERNAME]];
     }
     if (t_passwordField == nil) {
-        t_passwordField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
+        t_passwordField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
         [t_passwordField setEnablesReturnKeyAutomatically:YES];
         [t_passwordField setReturnKeyType:UIReturnKeyDone];
         [t_passwordField setSecureTextEntry:YES];
@@ -82,7 +82,7 @@
         [t_passwordField setText:[userDefaults stringForKey:CONFIG_TWITTER_PASSWORD]];
     }
     if (w_passwordField == nil) {
-        w_passwordField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
+        w_passwordField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
         [w_passwordField setEnablesReturnKeyAutomatically:YES];
         [w_passwordField setReturnKeyType:UIReturnKeyDone];
         [w_passwordField setSecureTextEntry:YES];
@@ -92,7 +92,7 @@
         [w_passwordField setText:[userDefaults stringForKey:CONFIG_WASSR_PASSWORD]];
     }
     if (imageSizeField == nil) {
-        imageSizeField = [[[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)] autorelease];
+        imageSizeField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
         [imageSizeField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
         [imageSizeField setAutocorrectionType:UITextAutocorrectionTypeNo];
         [imageSizeField setEnablesReturnKeyAutomatically:YES];
@@ -113,7 +113,7 @@
 	
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
 		[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
 	if ([indexPath section] < 3) {
@@ -344,6 +344,14 @@
 
 
 - (void)dealloc {
+    [configView release];
+    [t_switch release];
+    [t_usernameField release];
+    [t_passwordField release];
+    [w_switch release];
+    [w_usernameField release];
+    [w_passwordField release];
+    [imageSizeField release];
     [super dealloc];
 }
 
