@@ -21,6 +21,8 @@
 @synthesize cameraButton;
 @synthesize imageView;
 @synthesize targetChannel;
+@synthesize channelSheet;
+@synthesize channelView;
 
 - (NSInteger) getMaxLength {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -179,31 +181,35 @@
 }
 
 - (IBAction) selectWassrTargetClicked:(id)sender {
-    UIActionSheet *sheet = [[[UIActionSheet alloc] 
-                             initWithTitle:@"投稿先を選択してください" 
-                             delegate:self 
-                             cancelButtonTitle:@"キャンセル" 
-                             destructiveButtonTitle:nil 
-                             otherButtonTitles:@"タイムライン", @"チャンネル", nil] autorelease];
-    [sheet showInView:self.view];
-    
+    if (!channelSheet) {
+        channelSheet = [[UIActionSheet alloc] 
+                        initWithTitle:@"投稿先を選択してください" 
+                        delegate:self 
+                        cancelButtonTitle:@"キャンセル" 
+                        destructiveButtonTitle:nil 
+                        otherButtonTitles:@"タイムライン", @"チャンネル", nil];
+    }
+    [channelSheet showInView:self.view];
 }
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    ChannelViewController *controller;
-    switch (buttonIndex) {
-        case 0:
-            targetChannel = nil;
-            wassrTarget.text = @"タイムライン";
-            break;
-        case 1:
-            controller = [[[ChannelViewController alloc] initWithNibName:@"ChannelViewController" bundle:nil] autorelease];
-            controller.delegate = self;
-            [self presentModalViewController:controller animated:YES];
-            break;
-        default:
-            break;
+    if (actionSheet == channelSheet) {
+        switch (buttonIndex) {
+            case 0:
+                targetChannel = nil;
+                wassrTarget.text = @"タイムライン";
+                break;
+            case 1:
+                if (!channelView) {
+                    channelView = [[ChannelViewController alloc] initWithNibName:@"ChannelViewController" bundle:nil];
+                    channelView.delegate = self;
+                }
+                [self presentModalViewController:channelView animated:YES];
+                break;
+            default:
+                break;
+        }
     }
 }
 
@@ -299,9 +305,9 @@
 
 
 - (void)dealloc {
-    if (targetChannel) {
-        [targetChannel release];
-    }
+    [targetChannel release];
+    [channelSheet release];
+    [channelView release];
     [super dealloc];
 }
 
