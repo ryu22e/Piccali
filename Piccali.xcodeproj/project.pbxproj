@@ -44,6 +44,8 @@
 		85896272133F73F100ED1034 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 85896267133F73F000ED1034 /* SBJsonStreamWriterState.m */; };
 		85896273133F73F100ED1034 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 85896269133F73F000ED1034 /* SBJsonTokeniser.m */; };
 		85896274133F73F100ED1034 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8589626B133F73F000ED1034 /* SBJsonWriter.m */; };
+		858F93401341C93E0031615D /* AboutCotroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 858F933E1341C93E0031615D /* AboutCotroller.m */; };
+		858F93411341C93E0031615D /* AboutCotroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 858F933F1341C93E0031615D /* AboutCotroller.xib */; };
 		85A1FCFE133E241A0095B745 /* ChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A1FCFC133E241A0095B745 /* ChannelViewController.m */; };
 		85A1FCFF133E241A0095B745 /* ChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A1FCFD133E241A0095B745 /* ChannelViewController.xib */; };
 		85D745F91337B3A600145F3B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D745F81337B3A600145F3B /* libxml2.dylib */; };
@@ -139,6 +141,9 @@
 		85896269133F73F000ED1034 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
 		8589626A133F73F000ED1034 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		8589626B133F73F000ED1034 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		858F933D1341C93E0031615D /* AboutCotroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutCotroller.h; sourceTree = "<group>"; };
+		858F933E1341C93E0031615D /* AboutCotroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutCotroller.m; sourceTree = "<group>"; };
+		858F933F1341C93E0031615D /* AboutCotroller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutCotroller.xib; path = Classes/AboutCotroller.xib; sourceTree = "<group>"; };
 		85A1FCFB133E241A0095B745 /* ChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelViewController.h; sourceTree = "<group>"; };
 		85A1FCFC133E241A0095B745 /* ChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelViewController.m; sourceTree = "<group>"; };
 		85A1FCFD133E241A0095B745 /* ChannelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChannelViewController.xib; path = Classes/ChannelViewController.xib; sourceTree = "<group>"; };
@@ -207,6 +212,8 @@
 				85EF67AE132E6EC400DA7BB6 /* PiccaliCommon.h */,
 				1D3623240D0F684500981E51 /* PiccaliAppDelegate.h */,
 				1D3623250D0F684500981E51 /* PiccaliAppDelegate.m */,
+				858F933D1341C93E0031615D /* AboutCotroller.h */,
+				858F933E1341C93E0031615D /* AboutCotroller.m */,
 				85A1FCFB133E241A0095B745 /* ChannelViewController.h */,
 				85A1FCFC133E241A0095B745 /* ChannelViewController.m */,
 				85896254133F460F00ED1034 /* ChannelViewControllerDelegate.h */,
@@ -260,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				85A1FCFD133E241A0095B745 /* ChannelViewController.xib */,
+				858F933F1341C93E0031615D /* AboutCotroller.xib */,
 				2840D7CD1179279E00D7F93C /* FirstView.xib */,
 				282CCBFD0DB6C98000C4EA27 /* SecondView.xib */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
@@ -434,6 +442,7 @@
 				857709941338D41700312C29 /* OAuthConsumer in Resources */,
 				85A1FCFF133E241A0095B745 /* ChannelViewController.xib in Resources */,
 				85EA473B1340C20500F20B8B /* Icon.png in Resources */,
+				858F93411341C93E0031615D /* AboutCotroller.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +492,7 @@
 				85896272133F73F100ED1034 /* SBJsonStreamWriterState.m in Sources */,
 				85896273133F73F100ED1034 /* SBJsonTokeniser.m in Sources */,
 				85896274133F73F100ED1034 /* SBJsonWriter.m in Sources */,
+				858F93401341C93E0031615D /* AboutCotroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
