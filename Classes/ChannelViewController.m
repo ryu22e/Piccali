@@ -53,8 +53,8 @@
 
 - (void)loadChannelList {   
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *username = [userDefaults stringForKey:USERDEFAULTS_WASSR_USERNAME];
-    NSString *password = [userDefaults stringForKey:USERDEFAULTS_WASSR_PASSWORD];
+    NSString *username = [userDefaults stringForKey:CONFIG_WASSR_USERNAME];
+    NSString *password = [userDefaults stringForKey:CONFIG_WASSR_PASSWORD];
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:WASSR_CHANNEL_LIST_API_URL, username]];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];

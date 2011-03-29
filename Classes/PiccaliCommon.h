@@ -5,13 +5,15 @@
 //  Created by 筒井 隆次 on 11/03/15.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-#define USERDEFAULTS_TWITTER_ENABLE @"twitter_enable"
-#define USERDEFAULTS_WASSR_ENABLE @"wassr_enable"
-#define USERDEFAULTS_TWITTER_USERNAME @"twitter_username"
-#define USERDEFAULTS_WASSR_USERNAME @"wassr_username"
-#define USERDEFAULTS_TWITTER_PASSWORD @"twitter_password"
-#define USERDEFAULTS_WASSR_PASSWORD @"wassr_password"
-#define USERDEFAULTS_IMAGE_SIZE @"image_size"
+#define CONFIG_TWITTER_ENABLE @"config_twitter_enable"
+#define CONFIG_WASSR_ENABLE @"config_wassr_enable"
+#define CONFIG_TWITTER_USERNAME @"config_twitter_username"
+#define CONFIG_WASSR_USERNAME @"config_wassr_username"
+#define CONFIG_TWITTER_PASSWORD @"config_twitter_password"
+#define CONFIG_WASSR_PASSWORD @"config_wassr_password"
+#define CONFIG_IMAGE_SIZE @"config_image_size"
+#define TWITTER_ENABLE @"twitter_enable"
+#define WASSR_ENABLE @"wassr_enable"
 #define DEFAULT_IMAGE_SIZE 1024
 #define REGEXP_IMAGE_SIZE @"^[0-9]{1,4}$"
 #define MAX_LENGTH_TWITTER 140
