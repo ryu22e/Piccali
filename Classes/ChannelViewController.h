@@ -13,11 +13,13 @@
 @interface ChannelViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
     @private
     IBOutlet UIActivityIndicatorView *activityIndicator;
+    IBOutlet UIBarButtonItem *doneButton;
     UIPickerView *channelPicker;
     NSMutableArray *channelList;
     id<ChannelViewControllerDelegate> delegate;
 }
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain) UIBarButtonItem *doneButton;
 @property (nonatomic, retain) UIPickerView *channelPicker;
 @property (nonatomic, retain) NSMutableArray *channelList;
 @property (nonatomic, assign) id<ChannelViewControllerDelegate> delegate;
