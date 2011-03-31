@@ -162,7 +162,7 @@
     
     request.delegate = self;
     
-    [request startAsynchronous];
+    [request startSynchronous];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request {
