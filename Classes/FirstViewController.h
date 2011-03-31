@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChannelViewControllerDelegate.h"
 #import "ChannelViewController.h"
+#import "PiccaliConfig.h"
 
 @interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, ChannelViewControllerDelegate>{
     @private

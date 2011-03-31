@@ -7,6 +7,8 @@
 //
 // PiccaliAPIKey.hというAPI Keyを定義したファイルもあるけど、githubに公開するとセキュリティ上の問題がありそうなので、これは非公開。
 #define PICCALI_VERSION @"1.0.0"
+#define SERVICENAME_TWITTER @"PiccaliTwitter"
+#define SERVICENAME_WASSR @"PiccaliWassr"
 #define RYU22E_URL @"https://twitter.com/#!/ryu22e"
 #define CONFIG_TWITTER_ENABLE @"config_twitter_enable"
 #define CONFIG_WASSR_ENABLE @"config_wassr_enable"
