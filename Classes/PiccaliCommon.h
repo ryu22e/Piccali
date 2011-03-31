@@ -21,7 +21,6 @@
 #define MAX_LENGTH_TWITTER 140
 #define MAX_LENGTH_WASSR 255
 #define MAX_LENGTH_OTHER 0
-#define TWITTER_API_KEY @"4fce0ca104faed9553f10acc3b9133f8"
 #define TWITTER_API_URL @"http://twitter.com/api/upload"
 #define TWITTER_API_METHOD @"POST"
 #define WASSR_API_URL @"http://api.wassr.jp/statuses/update.json"
