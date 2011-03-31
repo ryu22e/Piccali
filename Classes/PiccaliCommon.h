@@ -5,6 +5,7 @@
 //  Created by 筒井 隆次 on 11/03/15.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
+// PiccaliAPIKey.hというAPI Keyを定義したファイルもあるけど、githubに公開するとセキュリティ上の問題がありそうなので、これは非公開。
 #define PICCALI_VERSION @"1.0.0"
 #define RYU22E_URL @"https://twitter.com/#!/ryu22e"
 #define CONFIG_TWITTER_ENABLE @"config_twitter_enable"
