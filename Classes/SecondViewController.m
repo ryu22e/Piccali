@@ -9,6 +9,7 @@
 #import "SecondViewController.h"
 #import "PiccaliCommon.h"
 #import "AboutCotroller.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation SecondViewController
 @synthesize configView;
@@ -62,7 +63,7 @@
         [t_usernameField addTarget:self action:@selector(textFieldEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [t_usernameField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
         [t_usernameField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
-         [t_usernameField setText:[userDefaults stringForKey:CONFIG_TWITTER_USERNAME]];
+        [t_usernameField setText:[userDefaults stringForKey:CONFIG_TWITTER_USERNAME]];
     }
     if (w_usernameField == nil) {
         w_usernameField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
@@ -84,7 +85,9 @@
         [t_passwordField addTarget:self action:@selector(textFieldEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [t_passwordField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
         [t_passwordField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
-        [t_passwordField setText:[userDefaults stringForKey:CONFIG_TWITTER_PASSWORD]];
+        NSString *username = [userDefaults stringForKey:CONFIG_TWITTER_USERNAME];
+        NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:SERVICENAME_TWITTER error:NULL];
+        [t_passwordField setText:password];
     }
     if (w_passwordField == nil) {
         w_passwordField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
@@ -94,7 +97,9 @@
         [w_passwordField addTarget:self action:@selector(textFieldEditingDidEndOnExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [w_passwordField addTarget:self action:@selector(textFieldEditingDidBegin:) forControlEvents:UIControlEventEditingDidBegin];
         [w_passwordField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
-        [w_passwordField setText:[userDefaults stringForKey:CONFIG_WASSR_PASSWORD]];
+        NSString *username = [userDefaults stringForKey:CONFIG_WASSR_USERNAME];
+        NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:SERVICENAME_WASSR error:NULL];
+        [w_passwordField setText:password];
     }
     if (imageSizeField == nil) {
         imageSizeField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
@@ -253,19 +258,19 @@
     NSLog(@"textFieldDidEndEditing");
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([textField isEqual:t_usernameField]) {
-        [userDefaults setObject:[textField text] forKey:CONFIG_TWITTER_USERNAME];
+        [userDefaults setObject:textField.text forKey:CONFIG_TWITTER_USERNAME];
     }
     if ([textField isEqual:w_usernameField]) {
-        [userDefaults setObject:[textField text] forKey:CONFIG_WASSR_USERNAME];
+        [userDefaults setObject:textField.text forKey:CONFIG_WASSR_USERNAME];
     }
     if ([textField isEqual:t_passwordField]) {
-        [userDefaults setObject:[textField text] forKey:CONFIG_TWITTER_PASSWORD];
+        [SFHFKeychainUtils storeUsername:t_usernameField.text andPassword:textField.text forServiceName:SERVICENAME_TWITTER updateExisting:YES error:NULL];
     }
     if ([textField isEqual:w_passwordField]) {
-        [userDefaults setObject:[textField text] forKey:CONFIG_WASSR_PASSWORD];
+        [SFHFKeychainUtils storeUsername:w_usernameField.text andPassword:textField.text forServiceName:SERVICENAME_WASSR updateExisting:YES error:NULL];
     }
     if ([textField isEqual:imageSizeField]) {
-        [userDefaults setObject:[textField text] forKey:CONFIG_IMAGE_SIZE];
+        [userDefaults setObject:textField.text forKey:CONFIG_IMAGE_SIZE];
     }
 }
 

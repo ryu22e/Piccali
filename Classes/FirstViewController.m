@@ -10,6 +10,7 @@
 #import "PiccaliCommon.h"
 #import "ChannelViewController.h"
 #import "ASIFormDataRequest.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation FirstViewController
 @synthesize twitterIndicator;
@@ -145,8 +146,8 @@
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *username = [userDefaults stringForKey:CONFIG_WASSR_USERNAME];
-    NSString *password = [userDefaults stringForKey:CONFIG_WASSR_PASSWORD];
+    NSString *username = [userDefaults objectForKey:CONFIG_WASSR_USERNAME];
+    NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:SERVICENAME_WASSR error:NULL];
     
     [request setUsername:username];
     [request setPassword:password];
@@ -330,11 +331,12 @@
     }
     return self;
 }
-*/
+ */
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 /*
 - (void)loadView {
+    [super loadView];
 }
 */
 

@@ -22,6 +22,13 @@
 		851F949513420BB400EF0A00 /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = 851F949313420BB400EF0A00 /* library.png */; };
 		851F949C134224CD00EF0A00 /* post_error.png in Resources */ = {isa = PBXBuildFile; fileRef = 851F949A134224CD00EF0A00 /* post_error.png */; };
 		851F949D134224CD00EF0A00 /* post_success.png in Resources */ = {isa = PBXBuildFile; fileRef = 851F949B134224CD00EF0A00 /* post_success.png */; };
+		8536D9DE134474D2002C401D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		8536D9DF134474D2002C401D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		8536D9E0134474D2002C401D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		8536D9E6134474D2002C401D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8536D9E4134474D2002C401D /* InfoPlist.strings */; };
+		8544559A134477AE00D9B205 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85445599134477AE00D9B205 /* Security.framework */; };
+		854455C21344A30200D9B205 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854455C11344A30200D9B205 /* Security.framework */; };
+		854455CB1344A8B300D9B205 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 854455CA1344A8B300D9B205 /* SFHFKeychainUtils.m */; };
 		856A9FC113213524008E0ADB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 856A9FC013213524008E0ADB /* SecondViewController.m */; };
 		857709531338D3FB00312C29 /* XAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 857709511338D3FB00312C29 /* XAuthTwitterEngine.m */; };
 		857709801338D41700312C29 /* ExchangeCredentialsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 857709551338D41700312C29 /* ExchangeCredentialsOperation.m */; };
@@ -71,6 +78,16 @@
 		85EA473B1340C20500F20B8B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 85EA47331340BF7E00F20B8B /* Icon.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8544559B134480B300D9B205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D6058900D05DD3D006BFB54;
+			remoteInfo = Piccali;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* PiccaliAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliAppDelegate.h; sourceTree = "<group>"; };
@@ -91,6 +108,14 @@
 		851F949313420BB400EF0A00 /* library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = library.png; sourceTree = "<group>"; };
 		851F949A134224CD00EF0A00 /* post_error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_error.png; sourceTree = "<group>"; };
 		851F949B134224CD00EF0A00 /* post_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_success.png; sourceTree = "<group>"; };
+		8536D9DD134474D2002C401D /* PiccaliTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PiccaliTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8536D9E3134474D2002C401D /* PiccaliTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PiccaliTest-Info.plist"; sourceTree = "<group>"; };
+		8536D9E5134474D2002C401D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8536D9E7134474D2002C401D /* PiccaliTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PiccaliTest-Prefix.pch"; sourceTree = "<group>"; };
+		85445599134477AE00D9B205 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		854455C11344A30200D9B205 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		854455C91344A8B300D9B205 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		854455CA1344A8B300D9B205 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		856A9FBF13213524008E0ADB /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		856A9FC013213524008E0ADB /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		857709501338D3FB00312C29 /* XAuthTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAuthTwitterEngine.h; sourceTree = "<group>"; };
@@ -199,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8544559A134477AE00D9B205 /* Security.framework in Frameworks */,
 				8577099B1338D92E00312C29 /* libOAuth.a in Frameworks */,
 				85D745F91337B3A600145F3B /* libxml2.dylib in Frameworks */,
 				85DE4CCA133794CC00E29B2B /* libz.dylib in Frameworks */,
@@ -208,6 +234,17 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8536D9D9134474D2002C401D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				854455C21344A30200D9B205 /* Security.framework in Frameworks */,
+				8536D9DE134474D2002C401D /* UIKit.framework in Frameworks */,
+				8536D9DF134474D2002C401D /* Foundation.framework in Frameworks */,
+				8536D9E0134474D2002C401D /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* Piccali.app */,
+				8536D9DD134474D2002C401D /* PiccaliTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,6 +282,8 @@
 		29B97314FDCFA39411CA2CEA /* Piccali */ = {
 			isa = PBXGroup;
 			children = (
+				854455C11344A30200D9B205 /* Security.framework */,
+				85445599134477AE00D9B205 /* Security.framework */,
 				85EA47331340BF7E00F20B8B /* Icon.png */,
 				8577099A1338D92E00312C29 /* libOAuth.a */,
 				85D745F81337B3A600145F3B /* libxml2.dylib */,
@@ -255,11 +295,13 @@
 				85DE4C1A13378E1900E29B2B /* SystemConfiguration.framework */,
 				85DE4C1613378D7D00E29B2B /* CFNetwork.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
+				854455C81344A85D00D9B205 /* SFHFKeychainUtils */,
 				85896258133F729700ED1034 /* json-framework */,
 				85D745C11337B2A900145F3B /* XAuthTwitterEngine */,
 				85DE4C2013378FB700E29B2B /* ASIHTTPRequest */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				8536D9E1134474D2002C401D /* PiccaliTest */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -302,6 +344,33 @@
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8536D9E1134474D2002C401D /* PiccaliTest */ = {
+			isa = PBXGroup;
+			children = (
+				8536D9E2134474D2002C401D /* Supporting Files */,
+			);
+			path = PiccaliTest;
+			sourceTree = "<group>";
+		};
+		8536D9E2134474D2002C401D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8536D9E3134474D2002C401D /* PiccaliTest-Info.plist */,
+				8536D9E4134474D2002C401D /* InfoPlist.strings */,
+				8536D9E7134474D2002C401D /* PiccaliTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		854455C81344A85D00D9B205 /* SFHFKeychainUtils */ = {
+			isa = PBXGroup;
+			children = (
+				854455C91344A8B300D9B205 /* SFHFKeychainUtils.h */,
+				854455CA1344A8B300D9B205 /* SFHFKeychainUtils.m */,
+			);
+			name = SFHFKeychainUtils;
 			sourceTree = "<group>";
 		};
 		85896258133F729700ED1034 /* json-framework */ = {
@@ -425,6 +494,25 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* Piccali.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8536D9DC134474D2002C401D /* PiccaliTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8536D9EC134474D2002C401D /* Build configuration list for PBXNativeTarget "PiccaliTest" */;
+			buildPhases = (
+				8536D9D8134474D2002C401D /* Sources */,
+				8536D9D9134474D2002C401D /* Frameworks */,
+				8536D9DA134474D2002C401D /* Resources */,
+				8536D9DB134474D2002C401D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8544559C134480B300D9B205 /* PBXTargetDependency */,
+			);
+			name = PiccaliTest;
+			productName = PiccaliTest;
+			productReference = 8536D9DD134474D2002C401D /* PiccaliTest.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -439,12 +527,14 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Piccali */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Piccali */,
+				8536D9DC134474D2002C401D /* PiccaliTest */,
 			);
 		};
 /* End PBXProject section */
@@ -470,7 +560,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8536D9DA134474D2002C401D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8536D9E6134474D2002C401D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8536D9DB134474D2002C401D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -517,10 +631,37 @@
 				85896273133F73F100ED1034 /* SBJsonTokeniser.m in Sources */,
 				85896274133F73F100ED1034 /* SBJsonWriter.m in Sources */,
 				858F93401341C93E0031615D /* AboutCotroller.m in Sources */,
+				854455CB1344A8B300D9B205 /* SFHFKeychainUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8536D9D8134474D2002C401D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8544559C134480B300D9B205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D6058900D05DD3D006BFB54 /* Piccali */;
+			targetProxy = 8544559B134480B300D9B205 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8536D9E4134474D2002C401D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8536D9E5134474D2002C401D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -571,6 +712,53 @@
 			};
 			name = Release;
 		};
+		8536D9ED134474D2002C401D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PiccaliTest/PiccaliTest-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "PiccaliTest/PiccaliTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		8536D9EE134474D2002C401D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PiccaliTest/PiccaliTest-Prefix.pch";
+				INFOPLIST_FILE = "PiccaliTest/PiccaliTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -579,6 +767,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
@@ -596,6 +785,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
@@ -614,6 +804,15 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8536D9EC134474D2002C401D /* Build configuration list for PBXNativeTarget "PiccaliTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8536D9ED134474D2002C401D /* Debug */,
+				8536D9EE134474D2002C401D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
