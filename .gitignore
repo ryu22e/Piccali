@@ -11,3 +11,5 @@ build/*
 
 #Windows 
 Thumbs.db
+
+Classes/PiccaliAPIKey.h
