@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChannelViewControllerDelegate.h"
 #import "ChannelViewController.h"
+#import "XAuthTwitterEngine.h"
 
 @interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, ChannelViewControllerDelegate>{
     @private
@@ -29,6 +30,7 @@
     NSDictionary *targetChannel;
     UIActionSheet *channelSheet;
     ChannelViewController *channelView;
+    XAuthTwitterEngine *twitterEngine;
 }
 @property (nonatomic, retain) UIActivityIndicatorView *twitterIndicator;
 @property (nonatomic, retain) UIImageView *resultPostTwitter;
@@ -47,4 +49,5 @@
 @property (nonatomic, retain) NSDictionary *targetChannel;
 @property (nonatomic, retain) UIActionSheet *channelSheet;
 @property (nonatomic, retain) ChannelViewController *channelView;
+@property (nonatomic, retain) XAuthTwitterEngine *twitterEngine;
 @end

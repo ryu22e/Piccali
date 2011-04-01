@@ -8,6 +8,7 @@
 
 #import "SecondViewController.h"
 #import "PiccaliCommon.h"
+#import "PiccaliAPIKey.h"
 #import "AboutCotroller.h"
 #import "SFHFKeychainUtils.h"
 
@@ -21,6 +22,7 @@
 @synthesize w_passwordField;
 @synthesize imageSizeField;
 @synthesize aboutController;
+@synthesize twitterEngine;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch(section) {
@@ -257,17 +259,18 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     NSLog(@"textFieldDidEndEditing");
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([textField isEqual:t_usernameField]) {
-        [userDefaults setObject:textField.text forKey:CONFIG_TWITTER_USERNAME];
+    if ([textField isEqual:t_usernameField] || [textField isEqual:t_passwordField]) {
+        [userDefaults setObject:t_usernameField.text forKey:CONFIG_TWITTER_USERNAME];
+        [SFHFKeychainUtils storeUsername:t_usernameField.text andPassword:t_passwordField.text forServiceName:SERVICENAME_TWITTER updateExisting:YES error:NULL];
+        if (![t_usernameField.text isEqual:@""] && ![t_passwordField.text isEqual:@""]) {
+            NSLog(@"exchangeAccessTokenForUsername");
+            [twitterEngine clearAccessToken];
+            [twitterEngine exchangeAccessTokenForUsername:t_usernameField.text password:t_passwordField.text];
+        }
     }
-    if ([textField isEqual:w_usernameField]) {
-        [userDefaults setObject:textField.text forKey:CONFIG_WASSR_USERNAME];
-    }
-    if ([textField isEqual:t_passwordField]) {
-        [SFHFKeychainUtils storeUsername:t_usernameField.text andPassword:textField.text forServiceName:SERVICENAME_TWITTER updateExisting:YES error:NULL];
-    }
-    if ([textField isEqual:w_passwordField]) {
-        [SFHFKeychainUtils storeUsername:w_usernameField.text andPassword:textField.text forServiceName:SERVICENAME_WASSR updateExisting:YES error:NULL];
+    if ([textField isEqual:w_usernameField] || [textField isEqual:w_passwordField]) {
+        [userDefaults setObject:w_usernameField.text forKey:CONFIG_WASSR_USERNAME];
+        [SFHFKeychainUtils storeUsername:w_usernameField.text andPassword:w_passwordField.text forServiceName:SERVICENAME_WASSR updateExisting:YES error:NULL];
     }
     if ([textField isEqual:imageSizeField]) {
         [userDefaults setObject:textField.text forKey:CONFIG_IMAGE_SIZE];
@@ -319,6 +322,32 @@
     }
 }
 
+// xAuthTwitterEngineのdelegate ここから
+- (NSString *) cachedTwitterXAuthAccessTokenStringForUsername: (NSString *)username;
+{
+	NSString *accessTokenString = [SFHFKeychainUtils getPasswordForUsername:CONFIG_CACHED_XAUTH_ACCESS_TOKEN_KEY andServiceName:SERVICENAME_TWITTER_TOKEN error:NULL];
+	
+	NSLog(@"About to return access token string: %@", accessTokenString);
+	
+	return accessTokenString;
+}
+
+- (void) storeCachedTwitterXAuthAccessTokenString: (NSString *)tokenString forUsername:(NSString *)username
+{
+	NSLog(@"Access token string returned: %@", tokenString);
+    [SFHFKeychainUtils storeUsername:CONFIG_CACHED_XAUTH_ACCESS_TOKEN_KEY andPassword:tokenString forServiceName:SERVICENAME_TWITTER_TOKEN updateExisting:YES error:NULL];
+}
+
+- (void)requestSucceeded:(NSString *)connectionIdentifier {
+    NSLog(@"Twitter request succeeded: %@", connectionIdentifier);
+}
+
+- (void) twitterXAuthConnectionDidFailWithError: (NSError *)error;
+{
+	NSLog(@"Error: %@", error);
+}
+// xAuthTwitterEngineのdelegate ここまで
+
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -335,12 +364,13 @@
 //    [super loadView];
 //}
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    twitterEngine = [[XAuthTwitterEngine alloc] initXAuthWithDelegate:self];
+    twitterEngine.consumerKey = TWITTER_CONSUMER_KEY;
+    twitterEngine.consumerSecret = TWITTER_CONSUMER_SECRET;
 }
-*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -374,6 +404,7 @@
     [w_passwordField release];
     [imageSizeField release];
     [aboutController release];
+    [twitterEngine release];
     [super dealloc];
 }
 
