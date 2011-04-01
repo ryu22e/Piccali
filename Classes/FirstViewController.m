@@ -160,7 +160,7 @@
     }   
 }
 
-- (void) postToWassr {
+- (void) postToWassr:(UIImage *)image message:(NSString *)message {
     NSLog(@"postToWassr start.");
     
     [wassrIndicator startAnimating];
@@ -192,9 +192,9 @@
     if (source != nil) {
         [request addPostValue:WASSR_API_SOURCE forKey:@"source"];
     }
-    [request addPostValue:postText.text forKey:statusOrBody];
-    if (imageView.image != nil) {
-        NSData *imageData = [[[NSData alloc] initWithData:UIImagePNGRepresentation(imageView.image)] autorelease];
+    [request addPostValue:message forKey:statusOrBody];
+    if (image != nil) {
+        NSData *imageData = [[[NSData alloc] initWithData:UIImagePNGRepresentation(image)] autorelease];
         [request setData:imageData forKey:@"image"];
     }
     
@@ -309,8 +309,7 @@
     }
     if (w_switch.enabled && [w_switch isOn]) {
         // Wassrにpostする。
-        // TODO メソッドのインターフェースを見直す。
-        [self postToWassr];
+        [self postToWassr:imageView.image message:postText.text];
     }
     
     [postButton setEnabled:YES];
