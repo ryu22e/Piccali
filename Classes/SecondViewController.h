@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AboutCotroller.h"
+#import "XAuthTwitterEngine.h"
 
 @interface SecondViewController : UIViewController <UITextFieldDelegate> {
 	@private
@@ -20,6 +21,7 @@
 	UITextField *w_passwordField;
     UITextField *imageSizeField;
     AboutCotroller *aboutController;
+    XAuthTwitterEngine *twitterEngine;
 }
 @property(nonatomic, retain) UITableView *configView;
 @property(nonatomic, retain) UISwitch *t_switch;
@@ -30,4 +32,5 @@
 @property(nonatomic, retain) UISwitch *w_switch;
 @property(nonatomic, retain) UITextField *imageSizeField;
 @property(nonatomic, retain) AboutCotroller *aboutController;
+@property(nonatomic, retain) XAuthTwitterEngine *twitterEngine;
 @end
