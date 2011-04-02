@@ -7,10 +7,6 @@
 //
 
 #import "SecondViewController.h"
-#import "PiccaliCommon.h"
-#import "PiccaliAPIKey.h"
-#import "AboutCotroller.h"
-#import "SFHFKeychainUtils.h"
 
 @implementation SecondViewController
 @synthesize configView;
@@ -21,7 +17,6 @@
 @synthesize w_usernameField;
 @synthesize w_passwordField;
 @synthesize imageSizeField;
-@synthesize aboutController;
 @synthesize twitterEngine;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -246,10 +241,7 @@
             }
             break;
         case 3:
-            if (!aboutController) {
-                aboutController = [[AboutCotroller alloc] initWithNibName:@"AboutCotroller" bundle:nil];
-            }
-            [self presentModalViewController:aboutController animated:YES];
+            [self.navigationController pushViewController:[[[PiccaliAboutController alloc] initWithNibName:@"PiccaliAboutController" bundle:nil] autorelease] animated:YES];
             break;
         default:
             break;
@@ -403,7 +395,6 @@
     [w_usernameField release];
     [w_passwordField release];
     [imageSizeField release];
-    [aboutController release];
     [twitterEngine release];
     [super dealloc];
 }

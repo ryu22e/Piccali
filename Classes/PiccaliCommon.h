@@ -12,8 +12,6 @@
 #define SERVICENAME_WASSR @"PiccaliWassr"
 #define SERVICENAME_TWITTER_TOKEN @"PiccaliTwitterToken"
 
-#define RYU22E_URL @"https://twitter.com/#!/ryu22e"
-
 #define CONFIG_TWITTER_ENABLE @"config_twitter_enable"
 #define CONFIG_WASSR_ENABLE @"config_wassr_enable"
 #define CONFIG_TWITTER_USERNAME @"config_twitter_username"
