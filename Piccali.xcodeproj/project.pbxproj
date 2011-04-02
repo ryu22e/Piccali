@@ -60,10 +60,10 @@
 		85896272133F73F100ED1034 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 85896267133F73F000ED1034 /* SBJsonStreamWriterState.m */; };
 		85896273133F73F100ED1034 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 85896269133F73F000ED1034 /* SBJsonTokeniser.m */; };
 		85896274133F73F100ED1034 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8589626B133F73F000ED1034 /* SBJsonWriter.m */; };
-		858F93401341C93E0031615D /* AboutCotroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 858F933E1341C93E0031615D /* AboutCotroller.m */; };
-		858F93411341C93E0031615D /* AboutCotroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 858F933F1341C93E0031615D /* AboutCotroller.xib */; };
 		85A1FCFE133E241A0095B745 /* ChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A1FCFC133E241A0095B745 /* ChannelViewController.m */; };
 		85A1FCFF133E241A0095B745 /* ChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A1FCFD133E241A0095B745 /* ChannelViewController.xib */; };
+		85D48A9A13477020001B440B /* PiccaliAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85D48A9813477020001B440B /* PiccaliAboutController.m */; };
+		85D48A9B13477020001B440B /* PiccaliAboutController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D48A9913477020001B440B /* PiccaliAboutController.xib */; };
 		85D745F91337B3A600145F3B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D745F81337B3A600145F3B /* libxml2.dylib */; };
 		85DE4CA5133790FA00E29B2B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DE4CA4133790FA00E29B2B /* CFNetwork.framework */; };
 		85DE4CA71337910400E29B2B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DE4CA61337910400E29B2B /* SystemConfiguration.framework */; };
@@ -188,13 +188,13 @@
 		85896269133F73F000ED1034 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
 		8589626A133F73F000ED1034 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		8589626B133F73F000ED1034 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		858F933D1341C93E0031615D /* AboutCotroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutCotroller.h; sourceTree = "<group>"; };
-		858F933E1341C93E0031615D /* AboutCotroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutCotroller.m; sourceTree = "<group>"; };
-		858F933F1341C93E0031615D /* AboutCotroller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutCotroller.xib; path = Classes/AboutCotroller.xib; sourceTree = "<group>"; };
 		85A1FCFB133E241A0095B745 /* ChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelViewController.h; sourceTree = "<group>"; };
 		85A1FCFC133E241A0095B745 /* ChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelViewController.m; sourceTree = "<group>"; };
 		85A1FCFD133E241A0095B745 /* ChannelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChannelViewController.xib; path = Classes/ChannelViewController.xib; sourceTree = "<group>"; };
 		85ABA3551344B65B0087DF79 /* PiccaliAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliAPIKey.h; sourceTree = "<group>"; };
+		85D48A9713477020001B440B /* PiccaliAboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliAboutController.h; sourceTree = "<group>"; };
+		85D48A9813477020001B440B /* PiccaliAboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiccaliAboutController.m; sourceTree = "<group>"; };
+		85D48A9913477020001B440B /* PiccaliAboutController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PiccaliAboutController.xib; path = Classes/PiccaliAboutController.xib; sourceTree = "<group>"; };
 		85D745F81337B3A600145F3B /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		85DE4C1613378D7D00E29B2B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		85DE4C1A13378E1900E29B2B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -277,8 +277,8 @@
 				85509F9B1347192900540988 /* PiccaliPostTarget */,
 				1D3623240D0F684500981E51 /* PiccaliAppDelegate.h */,
 				1D3623250D0F684500981E51 /* PiccaliAppDelegate.m */,
-				858F933D1341C93E0031615D /* AboutCotroller.h */,
-				858F933E1341C93E0031615D /* AboutCotroller.m */,
+				85D48A9713477020001B440B /* PiccaliAboutController.h */,
+				85D48A9813477020001B440B /* PiccaliAboutController.m */,
 				85A1FCFB133E241A0095B745 /* ChannelViewController.h */,
 				85A1FCFC133E241A0095B745 /* ChannelViewController.m */,
 				85896254133F460F00ED1034 /* ChannelViewControllerDelegate.h */,
@@ -343,7 +343,7 @@
 				851F949013420A1300EF0A00 /* config.png */,
 				851F948E1342096400EF0A00 /* post.png */,
 				85A1FCFD133E241A0095B745 /* ChannelViewController.xib */,
-				858F933F1341C93E0031615D /* AboutCotroller.xib */,
+				85D48A9913477020001B440B /* PiccaliAboutController.xib */,
 				2840D7CD1179279E00D7F93C /* FirstView.xib */,
 				282CCBFD0DB6C98000C4EA27 /* SecondView.xib */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
@@ -598,13 +598,13 @@
 				857709941338D41700312C29 /* OAuthConsumer in Resources */,
 				85A1FCFF133E241A0095B745 /* ChannelViewController.xib in Resources */,
 				85EA473B1340C20500F20B8B /* Icon.png in Resources */,
-				858F93411341C93E0031615D /* AboutCotroller.xib in Resources */,
 				851F948F1342096400EF0A00 /* post.png in Resources */,
 				851F949113420A1300EF0A00 /* config.png in Resources */,
 				851F949413420BB400EF0A00 /* camera.png in Resources */,
 				851F949513420BB400EF0A00 /* library.png in Resources */,
 				851F949C134224CD00EF0A00 /* post_error.png in Resources */,
 				851F949D134224CD00EF0A00 /* post_success.png in Resources */,
+				85D48A9B13477020001B440B /* PiccaliAboutController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,12 +678,12 @@
 				85896272133F73F100ED1034 /* SBJsonStreamWriterState.m in Sources */,
 				85896273133F73F100ED1034 /* SBJsonTokeniser.m in Sources */,
 				85896274133F73F100ED1034 /* SBJsonWriter.m in Sources */,
-				858F93401341C93E0031615D /* AboutCotroller.m in Sources */,
 				854455CB1344A8B300D9B205 /* SFHFKeychainUtils.m in Sources */,
 				85F4CCED13463C7900DE5041 /* PiccaliWassr.m in Sources */,
 				85509F9713470F9300540988 /* PiccaliTwitpic.m in Sources */,
 				85509F9A134713D300540988 /* PiccaliPostTarget.m in Sources */,
 				85509FA01347197100540988 /* PiccaliTwitter.m in Sources */,
+				85D48A9A13477020001B440B /* PiccaliAboutController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

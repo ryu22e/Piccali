@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AboutCotroller.h"
 #import "XAuthTwitterEngine.h"
+#import "PiccaliCommon.h"
+#import "PiccaliAPIKey.h"
+#import "PiccaliAboutController.h"
+#import "SFHFKeychainUtils.h"
 
 @interface SecondViewController : UIViewController <UITextFieldDelegate> {
 	@private
@@ -20,7 +23,6 @@
 	UITextField *w_usernameField;
 	UITextField *w_passwordField;
     UITextField *imageSizeField;
-    AboutCotroller *aboutController;
     XAuthTwitterEngine *twitterEngine;
 }
 @property(nonatomic, retain) UITableView *configView;
@@ -31,6 +33,5 @@
 @property(nonatomic, retain) UITextField *w_passwordField;
 @property(nonatomic, retain) UISwitch *w_switch;
 @property(nonatomic, retain) UITextField *imageSizeField;
-@property(nonatomic, retain) AboutCotroller *aboutController;
 @property(nonatomic, retain) XAuthTwitterEngine *twitterEngine;
 @end
