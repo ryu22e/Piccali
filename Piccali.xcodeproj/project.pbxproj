@@ -29,6 +29,9 @@
 		8544559A134477AE00D9B205 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85445599134477AE00D9B205 /* Security.framework */; };
 		854455C21344A30200D9B205 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854455C11344A30200D9B205 /* Security.framework */; };
 		854455CB1344A8B300D9B205 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 854455CA1344A8B300D9B205 /* SFHFKeychainUtils.m */; };
+		85509F9713470F9300540988 /* PiccaliTwitpic.m in Sources */ = {isa = PBXBuildFile; fileRef = 85509F9613470F9300540988 /* PiccaliTwitpic.m */; };
+		85509F9A134713D300540988 /* PiccaliPostTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 85509F99134713D300540988 /* PiccaliPostTarget.m */; };
+		85509FA01347197100540988 /* PiccaliTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 85509F9F1347197100540988 /* PiccaliTwitter.m */; };
 		856A9FC113213524008E0ADB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 856A9FC013213524008E0ADB /* SecondViewController.m */; };
 		857709531338D3FB00312C29 /* XAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 857709511338D3FB00312C29 /* XAuthTwitterEngine.m */; };
 		857709801338D41700312C29 /* ExchangeCredentialsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 857709551338D41700312C29 /* ExchangeCredentialsOperation.m */; };
@@ -76,6 +79,7 @@
 		85DE4CC8133792C700E29B2B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DE4CC7133792C700E29B2B /* Reachability.m */; };
 		85DE4CCA133794CC00E29B2B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DE4CC9133794CB00E29B2B /* libz.dylib */; };
 		85EA473B1340C20500F20B8B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 85EA47331340BF7E00F20B8B /* Icon.png */; };
+		85F4CCED13463C7900DE5041 /* PiccaliWassr.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F4CCEC13463C7900DE5041 /* PiccaliWassr.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +120,12 @@
 		854455C11344A30200D9B205 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		854455C91344A8B300D9B205 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		854455CA1344A8B300D9B205 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		85509F9513470F9300540988 /* PiccaliTwitpic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliTwitpic.h; sourceTree = "<group>"; };
+		85509F9613470F9300540988 /* PiccaliTwitpic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiccaliTwitpic.m; sourceTree = "<group>"; };
+		85509F98134713D300540988 /* PiccaliPostTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliPostTarget.h; sourceTree = "<group>"; };
+		85509F99134713D300540988 /* PiccaliPostTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiccaliPostTarget.m; sourceTree = "<group>"; };
+		85509F9E1347197100540988 /* PiccaliTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliTwitter.h; sourceTree = "<group>"; };
+		85509F9F1347197100540988 /* PiccaliTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiccaliTwitter.m; sourceTree = "<group>"; };
 		856A9FBF13213524008E0ADB /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		856A9FC013213524008E0ADB /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		857709501338D3FB00312C29 /* XAuthTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAuthTwitterEngine.h; sourceTree = "<group>"; };
@@ -217,6 +227,9 @@
 		85DE4CC9133794CB00E29B2B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		85EA47331340BF7E00F20B8B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		85EF67AE132E6EC400DA7BB6 /* PiccaliCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliCommon.h; sourceTree = "<group>"; };
+		85F4CCEB13463C7800DE5041 /* PiccaliWassr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliWassr.h; sourceTree = "<group>"; };
+		85F4CCEC13463C7900DE5041 /* PiccaliWassr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiccaliWassr.m; sourceTree = "<group>"; };
+		85F4CCEE1346412100DE5041 /* PiccaliPostDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliPostDelegate.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Piccali-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Piccali-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -261,6 +274,7 @@
 				856A9FC013213524008E0ADB /* SecondViewController.m */,
 				28216C960DB411BC00E5133A /* FirstViewController.m */,
 				85EF67AE132E6EC400DA7BB6 /* PiccaliCommon.h */,
+				85509F9B1347192900540988 /* PiccaliPostTarget */,
 				1D3623240D0F684500981E51 /* PiccaliAppDelegate.h */,
 				1D3623250D0F684500981E51 /* PiccaliAppDelegate.m */,
 				858F933D1341C93E0031615D /* AboutCotroller.h */,
@@ -373,6 +387,38 @@
 				854455CA1344A8B300D9B205 /* SFHFKeychainUtils.m */,
 			);
 			name = SFHFKeychainUtils;
+			sourceTree = "<group>";
+		};
+		85509F9B1347192900540988 /* PiccaliPostTarget */ = {
+			isa = PBXGroup;
+			children = (
+				85F4CCEE1346412100DE5041 /* PiccaliPostDelegate.h */,
+				85509F98134713D300540988 /* PiccaliPostTarget.h */,
+				85509F99134713D300540988 /* PiccaliPostTarget.m */,
+				85509F9D1347194400540988 /* Wassr */,
+				85509F9C1347193A00540988 /* Twitter */,
+			);
+			name = PiccaliPostTarget;
+			sourceTree = "<group>";
+		};
+		85509F9C1347193A00540988 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				85509F9513470F9300540988 /* PiccaliTwitpic.h */,
+				85509F9613470F9300540988 /* PiccaliTwitpic.m */,
+				85509F9E1347197100540988 /* PiccaliTwitter.h */,
+				85509F9F1347197100540988 /* PiccaliTwitter.m */,
+			);
+			name = Twitter;
+			sourceTree = "<group>";
+		};
+		85509F9D1347194400540988 /* Wassr */ = {
+			isa = PBXGroup;
+			children = (
+				85F4CCEB13463C7800DE5041 /* PiccaliWassr.h */,
+				85F4CCEC13463C7900DE5041 /* PiccaliWassr.m */,
+			);
+			name = Wassr;
 			sourceTree = "<group>";
 		};
 		85896258133F729700ED1034 /* json-framework */ = {
@@ -634,6 +680,10 @@
 				85896274133F73F100ED1034 /* SBJsonWriter.m in Sources */,
 				858F93401341C93E0031615D /* AboutCotroller.m in Sources */,
 				854455CB1344A8B300D9B205 /* SFHFKeychainUtils.m in Sources */,
+				85F4CCED13463C7900DE5041 /* PiccaliWassr.m in Sources */,
+				85509F9713470F9300540988 /* PiccaliTwitpic.m in Sources */,
+				85509F9A134713D300540988 /* PiccaliPostTarget.m in Sources */,
+				85509FA01347197100540988 /* PiccaliTwitter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
