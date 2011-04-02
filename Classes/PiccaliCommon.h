@@ -7,10 +7,13 @@
 //
 // PiccaliAPIKey.hというAPI Keyを定義したファイルもあるけど、githubに公開するとセキュリティ上の問題がありそうなので、これは非公開。
 #define PICCALI_VERSION @"1.0.0"
+
 #define SERVICENAME_TWITTER @"PiccaliTwitter"
 #define SERVICENAME_WASSR @"PiccaliWassr"
 #define SERVICENAME_TWITTER_TOKEN @"PiccaliTwitterToken"
+
 #define RYU22E_URL @"https://twitter.com/#!/ryu22e"
+
 #define CONFIG_TWITTER_ENABLE @"config_twitter_enable"
 #define CONFIG_WASSR_ENABLE @"config_wassr_enable"
 #define CONFIG_TWITTER_USERNAME @"config_twitter_username"
@@ -19,21 +22,13 @@
 #define CONFIG_WASSR_PASSWORD @"config_wassr_password"
 #define CONFIG_IMAGE_SIZE @"config_image_size"
 #define CONFIG_CACHED_XAUTH_ACCESS_TOKEN_KEY @"cached_xauth_access_token_key"
+
 #define TWITTER_ENABLE @"twitter_enable"
 #define WASSR_ENABLE @"wassr_enable"
+
 #define DEFAULT_IMAGE_SIZE 1024
 #define REGEXP_IMAGE_SIZE @"^[0-9]{1,4}$"
+
 #define MAX_LENGTH_TWITTER 140
 #define MAX_LENGTH_WASSR 255
 #define MAX_LENGTH_OTHER 0
-#define TWITTER_VERIFY_API_URL @"https://api.twitter.com/1/account/verify_credentials.json"
-#define TWITPIC_API_URL @"http://api.twitpic.com/2/upload.json"
-#define TWITPIC_API_METHOD @"POST"
-#define TWITPIC_COMPRESSION_QUALITY 0.8
-#define WASSR_API_URL @"http://api.wassr.jp/statuses/update.json"
-#define WASSR_CHANNEL_API_URL @"http://api.wassr.jp/channel_message/update.json?name_en=%@"
-#define WASSR_CHANNEL_LIST_API_URL @"http://api.wassr.jp/channel_user/user_list.json?login_id=%@"
-#define WASSR_API_METHOD @"POST"
-#define WASSR_API_SOURCE @"Piccali"
-#define POST_SUCCESS_IMAGE @"post_success.png"
-#define POST_ERROR_IMAGE @"post_error.png"

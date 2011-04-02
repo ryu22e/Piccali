@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "ChannelViewControllerDelegate.h"
 #import "ChannelViewController.h"
-#import "XAuthTwitterEngine.h"
+#import "PiccaliTwitpic.h"
+#import "PiccaliWassr.h"
+#import "PiccaliCommon.h"
+#import "ChannelViewController.h"
+#import "JSON.h"
 
-@interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, ChannelViewControllerDelegate>{
+#define POST_SUCCESS_IMAGE @"post_success.png"
+#define POST_ERROR_IMAGE @"post_error.png"
+
+@interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, ChannelViewControllerDelegate, PiccaliPostDelegate>{
     @private
     IBOutlet UIImageView *resultPostTwitter;
     IBOutlet UIActivityIndicatorView *twitterIndicator;
@@ -30,7 +37,8 @@
     NSDictionary *targetChannel;
     UIActionSheet *channelSheet;
     ChannelViewController *channelView;
-    XAuthTwitterEngine *twitterEngine;
+    id requestTwitter;
+    id requestWassr;
 }
 @property (nonatomic, retain) UIActivityIndicatorView *twitterIndicator;
 @property (nonatomic, retain) UIImageView *resultPostTwitter;
@@ -49,5 +57,6 @@
 @property (nonatomic, retain) NSDictionary *targetChannel;
 @property (nonatomic, retain) UIActionSheet *channelSheet;
 @property (nonatomic, retain) ChannelViewController *channelView;
-@property (nonatomic, retain) XAuthTwitterEngine *twitterEngine;
+@property (nonatomic, retain) id requestTwitter;
+@property (nonatomic, retain) id requestWassr;
 @end
