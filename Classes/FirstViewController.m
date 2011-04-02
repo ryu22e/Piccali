@@ -9,9 +9,11 @@
 #import "FirstViewController.h"
 
 @implementation FirstViewController
+@synthesize finishedPostTwitter;
+@synthesize finishedPostWassr;
+@synthesize errorPostTwitter;
+@synthesize errorPostWassr;
 @synthesize twitterIndicator;
-@synthesize resultPostTwitter;
-@synthesize resultPostWassr;
 @synthesize wassrIndicator;
 @synthesize t_switch;
 @synthesize w_switch;
@@ -22,6 +24,7 @@
 @synthesize cancelButton;
 @synthesize postButton;
 @synthesize cameraButton;
+@synthesize libraButton;
 @synthesize imageView;
 @synthesize targetChannel;
 @synthesize channelSheet;
@@ -63,6 +66,8 @@
     // 「Wassr」が有効、かつOnの場合のみ「Wassr投稿先選択」を有効にする。
     [selectWassrTargetButton setEnabled:(w_switch.enabled && [w_switch isOn])];
     
+    [postText setEditable:YES];
+    
     NSInteger maxLength = [self getMaxLength];
     NSInteger postTextLength = [[postText text] length];
     // メッセージを入力している、かつ長さが最大文字列数以内の場合のみキャンセルボタンと投稿ボタンを有効にする。
@@ -83,60 +88,104 @@
         postLengthLabel.textColor = [UIColor redColor];
     }
     [postLengthLabel setText:[NSString stringWithFormat:@"%d/%d", postTextLength, maxLength]];
+    
+    [cameraButton setEnabled:YES];
+    [libraButton setEnabled:YES];
 }
 
 - (void)resetTwitterIndicator {
     [twitterIndicator stopAnimating];
     [twitterIndicator setHidden:YES];
-    resultPostTwitter.image = nil;
-    [resultPostTwitter setHidden:YES];
+    [finishedPostTwitter setHidden:YES];
+    [errorPostTwitter setHidden:YES];
 }
 
 - (void)resetWassrIndicator {   
     [wassrIndicator stopAnimating];
     [wassrIndicator setHidden:YES];
-    resultPostWassr.image = nil;
-    [resultPostWassr setHidden:YES];
+    [finishedPostWassr setHidden:YES];
+    [errorPostWassr setHidden:YES];
 }
 
-- (void)setResult:(UIActivityIndicatorView *)indicator result:(UIImageView *)result imageName:(NSString *)imageName {
-    [indicator stopAnimating];
-    [indicator setHidden:YES];
-    result.image =  [UIImage imageNamed:imageName];
-    [result setHidden:NO];
+- (void)cleanup {
+    @synchronized(self) {        
+        // 全ての投稿処理が終わっていれば、コントローラを初期状態に戻す。
+        if (twitterIndicator.hidden && wassrIndicator.hidden) {
+            // 結果がエラーになっている処理がなければ、投稿内容をクリアする。
+            if (self.errorPostTwitter.hidden && self.errorPostWassr.hidden) {
+                postText.text = @"";
+                imageView.image = nil;
+            }
+            [self changeStatus];
+        }
+    }
+}
+
+- (void)notifyResultTwitter:(BOOL)hasError {
+    @synchronized(self) {
+        [twitterIndicator stopAnimating];
+        [twitterIndicator setHidden:YES];
+        if (hasError) {
+            // エラーが発生した。
+            [finishedPostTwitter setHidden:YES];
+            [errorPostTwitter setHidden:NO];
+        } else {
+            // エラーが発生しなかった。
+            [finishedPostTwitter setHidden:NO];
+            [errorPostTwitter setHidden:YES];
+        }
+        [self cleanup];
+    }
+}
+
+- (void)notifyResultWassr:(BOOL)hasError {
+    @synchronized(self) {
+        [wassrIndicator stopAnimating];
+        [wassrIndicator setHidden:YES];
+        if (hasError) {
+            // エラーが発生した。
+            [finishedPostWassr setHidden:YES];
+            [errorPostWassr setHidden:NO];
+        } else {
+            // エラーが発生しなかった。
+            [finishedPostWassr setHidden:NO];
+            [errorPostWassr setHidden:YES];
+        }
+        [self cleanup];
+    }
 }
 
 // PiccaliTwitpicのdelegate ここから
 - (void)failedAuthorizedTwitter:(NSError *)error {
     // Twitterへの投稿に失敗したことを画面に通知する。
-    [self setResult:twitterIndicator result:resultPostTwitter imageName:POST_ERROR_IMAGE];
+    [self notifyResultTwitter:YES];
 }
 
 - (void)failedToPostTwitpic:(ASIHTTPRequest *)request {
     // Twitpicへの投稿に失敗したことを画面に通知する。
-    [self setResult:twitterIndicator result:resultPostTwitter imageName:POST_ERROR_IMAGE];
+    [self notifyResultTwitter:YES];
 }
 
 - (void)finishedToPostTwitpic:(ASIHTTPRequest *)request {
     // Twitpicへの投稿に成功したことを画面に通知する。
-    [self setResult:twitterIndicator result:resultPostTwitter imageName:POST_SUCCESS_IMAGE];
+    [self notifyResultTwitter:NO];
 }
 
 - (void)finishedToPostTwitter:(NSString *)connectionIdentifier {
     // Twitterへの投稿に成功したことを画面に通知する。
-    [self setResult:twitterIndicator result:resultPostTwitter imageName:POST_SUCCESS_IMAGE];
+    [self notifyResultTwitter:NO];
 }
 // PiccaliTwitpicのdelegate ここまで
 
 // PiccaliWassrのdelegate ここから
 - (void)failedToPostWassr:(ASIHTTPRequest *)request {
     // Wassrへの投稿に失敗したことを画面に通知する。
-    [self setResult:wassrIndicator result:resultPostWassr imageName:POST_ERROR_IMAGE];
+    [self notifyResultWassr:YES];
 }
 
 - (void)finishedToPostWassr:(ASIHTTPRequest *)request {
     // Wassrへの投稿に成功したことを画面に通知する。
-    [self setResult:wassrIndicator result:resultPostWassr imageName:POST_SUCCESS_IMAGE];
+    [self notifyResultWassr:NO];
 }
 // PiccaliWassrのdelegate ここまで
 
@@ -173,12 +222,24 @@
 - (IBAction)postClicked:(id)sender {
     NSLog(@"postClicked start.");
     
+    [self.view endEditing:YES];
+    
     [self resetTwitterIndicator];
     [self resetWassrIndicator];
     
-    [postButton setEnabled:NO];
+    BOOL postTwitter = t_switch.enabled && [t_switch isOn];
+    BOOL postWassr = w_switch.enabled && [w_switch isOn];
     
-    if (t_switch.enabled && [t_switch isOn]) {
+    [t_switch setEnabled:NO];
+    [w_switch setEnabled:NO];
+    [selectWassrTargetButton setEnabled:NO];
+    [postText setEditable:NO];
+    [postButton setEnabled:NO];
+    [cancelButton setEnabled:NO];
+    [cameraButton setEnabled:NO];
+    [libraButton setEnabled:NO];
+    
+    if (postTwitter) {
         // Twitpicにpostする。
         [twitterIndicator startAnimating];
         [twitterIndicator setHidden:NO];
@@ -186,7 +247,7 @@
         [self.requestTwitter setDelegate:self];
         [self.requestTwitter post:imageView.image message:postText.text];
     }
-    if (w_switch.enabled && [w_switch isOn]) {
+    if (postWassr) {
         // Wassrにpostする。
         [wassrIndicator startAnimating];
         [wassrIndicator setHidden:NO];
@@ -199,7 +260,6 @@
         }
     }
     
-    [postButton setEnabled:YES];
     NSLog(@"postClicked end.");
 }
 
@@ -301,7 +361,7 @@
 - (void)loadView {
     [super loadView];
 }
-*/
+ */
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {

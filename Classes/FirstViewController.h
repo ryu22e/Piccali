@@ -15,14 +15,13 @@
 #import "ChannelViewController.h"
 #import "JSON.h"
 
-#define POST_SUCCESS_IMAGE @"post_success.png"
-#define POST_ERROR_IMAGE @"post_error.png"
-
 @interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, ChannelViewControllerDelegate, PiccaliPostDelegate>{
     @private
-    IBOutlet UIImageView *resultPostTwitter;
+    IBOutlet UIImageView *finishedPostTwitter;
+    IBOutlet UIImageView *finishedPostWassr;
+    IBOutlet UIImageView *errorPostTwitter;
+    IBOutlet UIImageView *errorPostWassr;
     IBOutlet UIActivityIndicatorView *twitterIndicator;
-    IBOutlet UIImageView *resultPostWassr;
     IBOutlet UIActivityIndicatorView *wassrIndicator;
     IBOutlet UISwitch *t_switch;
     IBOutlet UISwitch *w_switch;
@@ -33,16 +32,20 @@
     IBOutlet UIButton *cancelButton;
     IBOutlet UIButton *postButton;
     IBOutlet UIButton *cameraButton;
+    IBOutlet UIButton *libraButton;
     IBOutlet UIImageView *imageView;
     NSDictionary *targetChannel;
     UIActionSheet *channelSheet;
     ChannelViewController *channelView;
     id requestTwitter;
     id requestWassr;
+    NSInteger errorCount;
 }
+@property (nonatomic, retain) UIImageView *finishedPostTwitter;
+@property (nonatomic, retain) UIImageView *finishedPostWassr;
+@property (nonatomic, retain) UIImageView *errorPostTwitter;
+@property (nonatomic, retain) UIImageView *errorPostWassr;
 @property (nonatomic, retain) UIActivityIndicatorView *twitterIndicator;
-@property (nonatomic, retain) UIImageView *resultPostTwitter;
-@property (nonatomic, retain) UIImageView *resultPostWassr;
 @property (nonatomic, retain) UIActivityIndicatorView *wassrIndicator;
 @property (nonatomic, retain) UISwitch *t_switch;
 @property (nonatomic, retain) UISwitch *w_switch;
@@ -53,6 +56,7 @@
 @property (nonatomic, retain) UIButton *cancelButton;
 @property (nonatomic, retain) UIButton *postButton;
 @property (nonatomic, retain) UIButton *cameraButton;
+@property (nonatomic, retain) UIButton *libraButton;
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) NSDictionary *targetChannel;
 @property (nonatomic, retain) UIActionSheet *channelSheet;
