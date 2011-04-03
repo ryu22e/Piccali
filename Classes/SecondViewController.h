@@ -10,6 +10,8 @@
 #import "XAuthTwitterEngine.h"
 #import "PiccaliCommon.h"
 #import "PiccaliAPIKey.h"
+#import "PiccaliTwitterConfig.h"
+#import "PiccaliWassrConfig.h"
 #import "PiccaliAboutController.h"
 #import "SFHFKeychainUtils.h"
 
