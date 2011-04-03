@@ -64,6 +64,10 @@
 		85A1FCFF133E241A0095B745 /* ChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A1FCFD133E241A0095B745 /* ChannelViewController.xib */; };
 		85D48A9A13477020001B440B /* PiccaliAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85D48A9813477020001B440B /* PiccaliAboutController.m */; };
 		85D48A9B13477020001B440B /* PiccaliAboutController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D48A9913477020001B440B /* PiccaliAboutController.xib */; };
+		85D48A9F13477626001B440B /* PiccaliTwitterConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 85D48A9D13477626001B440B /* PiccaliTwitterConfig.m */; };
+		85D48AA013477626001B440B /* PiccaliTwitterConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D48A9E13477626001B440B /* PiccaliTwitterConfig.xib */; };
+		85D48AA4134776FF001B440B /* PiccaliWassrConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 85D48AA2134776FF001B440B /* PiccaliWassrConfig.m */; };
+		85D48AA5134776FF001B440B /* PiccaliWassrConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D48AA3134776FF001B440B /* PiccaliWassrConfig.xib */; };
 		85D745F91337B3A600145F3B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D745F81337B3A600145F3B /* libxml2.dylib */; };
 		85DE4CA5133790FA00E29B2B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DE4CA4133790FA00E29B2B /* CFNetwork.framework */; };
 		85DE4CA71337910400E29B2B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DE4CA61337910400E29B2B /* SystemConfiguration.framework */; };
@@ -195,6 +199,12 @@
 		85D48A9713477020001B440B /* PiccaliAboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliAboutController.h; sourceTree = "<group>"; };
 		85D48A9813477020001B440B /* PiccaliAboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiccaliAboutController.m; sourceTree = "<group>"; };
 		85D48A9913477020001B440B /* PiccaliAboutController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PiccaliAboutController.xib; path = Classes/PiccaliAboutController.xib; sourceTree = "<group>"; };
+		85D48A9C13477626001B440B /* PiccaliTwitterConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliTwitterConfig.h; sourceTree = "<group>"; };
+		85D48A9D13477626001B440B /* PiccaliTwitterConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiccaliTwitterConfig.m; sourceTree = "<group>"; };
+		85D48A9E13477626001B440B /* PiccaliTwitterConfig.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PiccaliTwitterConfig.xib; path = Classes/PiccaliTwitterConfig.xib; sourceTree = "<group>"; };
+		85D48AA1134776FF001B440B /* PiccaliWassrConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliWassrConfig.h; sourceTree = "<group>"; };
+		85D48AA2134776FF001B440B /* PiccaliWassrConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiccaliWassrConfig.m; sourceTree = "<group>"; };
+		85D48AA3134776FF001B440B /* PiccaliWassrConfig.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PiccaliWassrConfig.xib; path = Classes/PiccaliWassrConfig.xib; sourceTree = "<group>"; };
 		85D745F81337B3A600145F3B /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		85DE4C1613378D7D00E29B2B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		85DE4C1A13378E1900E29B2B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -268,20 +278,24 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				85ABA3551344B65B0087DF79 /* PiccaliAPIKey.h */,
-				28216C950DB411BC00E5133A /* FirstViewController.h */,
-				856A9FBF13213524008E0ADB /* SecondViewController.h */,
-				856A9FC013213524008E0ADB /* SecondViewController.m */,
-				28216C960DB411BC00E5133A /* FirstViewController.m */,
-				85EF67AE132E6EC400DA7BB6 /* PiccaliCommon.h */,
-				85509F9B1347192900540988 /* PiccaliPostTarget */,
 				1D3623240D0F684500981E51 /* PiccaliAppDelegate.h */,
 				1D3623250D0F684500981E51 /* PiccaliAppDelegate.m */,
-				85D48A9713477020001B440B /* PiccaliAboutController.h */,
-				85D48A9813477020001B440B /* PiccaliAboutController.m */,
+				28216C950DB411BC00E5133A /* FirstViewController.h */,
+				28216C960DB411BC00E5133A /* FirstViewController.m */,
 				85A1FCFB133E241A0095B745 /* ChannelViewController.h */,
 				85A1FCFC133E241A0095B745 /* ChannelViewController.m */,
 				85896254133F460F00ED1034 /* ChannelViewControllerDelegate.h */,
+				856A9FBF13213524008E0ADB /* SecondViewController.h */,
+				856A9FC013213524008E0ADB /* SecondViewController.m */,
+				85D48A9C13477626001B440B /* PiccaliTwitterConfig.h */,
+				85D48A9D13477626001B440B /* PiccaliTwitterConfig.m */,
+				85D48AA1134776FF001B440B /* PiccaliWassrConfig.h */,
+				85D48AA2134776FF001B440B /* PiccaliWassrConfig.m */,
+				85D48A9713477020001B440B /* PiccaliAboutController.h */,
+				85D48A9813477020001B440B /* PiccaliAboutController.m */,
+				85509F9B1347192900540988 /* PiccaliPostTarget */,
+				85ABA3551344B65B0087DF79 /* PiccaliAPIKey.h */,
+				85EF67AE132E6EC400DA7BB6 /* PiccaliCommon.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -342,6 +356,8 @@
 				851F949313420BB400EF0A00 /* library.png */,
 				851F949013420A1300EF0A00 /* config.png */,
 				851F948E1342096400EF0A00 /* post.png */,
+				85D48A9E13477626001B440B /* PiccaliTwitterConfig.xib */,
+				85D48AA3134776FF001B440B /* PiccaliWassrConfig.xib */,
 				85A1FCFD133E241A0095B745 /* ChannelViewController.xib */,
 				85D48A9913477020001B440B /* PiccaliAboutController.xib */,
 				2840D7CD1179279E00D7F93C /* FirstView.xib */,
@@ -605,6 +621,8 @@
 				851F949C134224CD00EF0A00 /* post_error.png in Resources */,
 				851F949D134224CD00EF0A00 /* post_success.png in Resources */,
 				85D48A9B13477020001B440B /* PiccaliAboutController.xib in Resources */,
+				85D48AA013477626001B440B /* PiccaliTwitterConfig.xib in Resources */,
+				85D48AA5134776FF001B440B /* PiccaliWassrConfig.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +702,8 @@
 				85509F9A134713D300540988 /* PiccaliPostTarget.m in Sources */,
 				85509FA01347197100540988 /* PiccaliTwitter.m in Sources */,
 				85D48A9A13477020001B440B /* PiccaliAboutController.m in Sources */,
+				85D48A9F13477626001B440B /* PiccaliTwitterConfig.m in Sources */,
+				85D48AA4134776FF001B440B /* PiccaliWassrConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
