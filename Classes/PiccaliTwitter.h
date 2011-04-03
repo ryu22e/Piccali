@@ -14,8 +14,10 @@
 #import "PiccaliCommon.h"
 
 @interface PiccaliTwitter : PiccaliPostTarget {
-    @protected
+    @private
     XAuthTwitterEngine *twitterEngine;
 }
+- (BOOL) isAuthorized;
 - (void)post:(NSString *)message;
+@property (nonatomic, readonly) XAuthTwitterEngine *twitterEngine;
 @end

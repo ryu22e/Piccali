@@ -13,8 +13,8 @@
 
 - (ASIFormDataRequest*)createOAuthEchoRequest {
 	OAMutableURLRequest *oauthRequest = [[[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:TWITTER_VERIFY_API_URL]
-                                                                         consumer:twitterEngine.consumer
-                                                                            token:twitterEngine.accessToken   
+                                                                         consumer:piccaliTwitter.twitterEngine.consumer
+                                                                            token:piccaliTwitter.twitterEngine.accessToken   
                                                                             realm:@"http://api.twitter.com/"
                                                                 signatureProvider:nil] autorelease];
     
@@ -42,15 +42,25 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         self.username = [userDefaults objectForKey:CONFIG_TWITTER_USERNAME];
         self.password = [SFHFKeychainUtils getPasswordForUsername:self.username andServiceName:SERVICENAME_TWITTER error:NULL];
+        piccaliTwitter = [[PiccaliTwitter alloc] init];
+        piccaliTwitter.delegate = self;
     }
     return self;
+}
+
+- (void)dealloc {
+    [piccaliTwitter release];
+    [super dealloc];
+}
+
+- (void)post:(NSString *)message {
+    [piccaliTwitter post:message];
 }
 
 - (void)post:(UIImage *)image message:(NSString *)message {
     NSLog(@"username:%@", self.username);
     NSLog(@"password:%@ ", self.password);
-    msg = message; // TODO あとで消す
-    if ([self.username isEqual:@""] || [self.password isEqual:@""] || ![twitterEngine isAuthorized]) {
+    if ([self.username isEqual:@""] || [self.password isEqual:@""] || ![piccaliTwitter isAuthorized]) {
         [self.delegate failedAuthorizedTwitter:nil];
         return;
     }
@@ -69,7 +79,7 @@
     } else {
         // Twitterに投稿する。
         NSLog(@"not image");
-        [super post:message];
+        [self post:message];
     }  
 }
 
@@ -84,8 +94,8 @@
     if (url) {
         // TwitpicのURLをTwitterに投稿する。
         NSLog(@"url:%@", url);
-        NSString *message = [NSString stringWithFormat:@"%@%@", msg, url];
-        [super post:message];
+        NSString *message = [NSString stringWithFormat:@"%@%@", [dic objectForKey:@"text"], url];
+        [self post:message];
     } else {
         // Twitpicへの投稿に成功したことを通知する。
         [self.delegate finishedToPostTwitpic:request];
@@ -100,4 +110,42 @@
     [self.delegate failedToPostTwitpic:request];
 }
 // ASIHTTPRequestのdelegate ここまで
+
+// xAuthTwitterEngineのdelegate ここから
+- (NSString *) cachedTwitterXAuthAccessTokenStringForUsername: (NSString *)username;
+{
+	NSString *accessTokenString = [SFHFKeychainUtils getPasswordForUsername:CONFIG_CACHED_XAUTH_ACCESS_TOKEN_KEY andServiceName:SERVICENAME_TWITTER_TOKEN error:NULL];
+	
+	NSLog(@"About to return access token string: %@", accessTokenString);
+	
+	return accessTokenString;
+}
+
+- (void) storeCachedTwitterXAuthAccessTokenString: (NSString *)tokenString forUsername:(NSString *)username
+{
+	NSLog(@"Access token string returned: %@", tokenString);
+    [SFHFKeychainUtils storeUsername:CONFIG_CACHED_XAUTH_ACCESS_TOKEN_KEY andPassword:tokenString forServiceName:SERVICENAME_TWITTER_TOKEN updateExisting:YES error:NULL];
+}
+
+- (void)requestSucceeded:(NSString *)connectionIdentifier {
+    NSLog(@"Twitter request succeeded: %@", connectionIdentifier);
+    [self.delegate finishedToPostTwitter:connectionIdentifier];
+}
+
+- (void) twitterXAuthConnectionDidFailWithError: (NSError *)error;
+{
+	NSLog(@"Error: %@", error);
+    [self.delegate failedAuthorizedTwitter:error];
+}
+// xAuthTwitterEngineのdelegate ここまで
+
+// PiccaliTwitterのdelegate ここから
+- (void)failedAuthorizedTwitter:(NSError *)error {
+    [self.delegate failedAuthorizedTwitter:error];
+}
+
+- (void)finishedToPostTwitter:(NSString *)connectionIdentifier {
+    [self.delegate finishedToPostTwitter:connectionIdentifier];
+}
+// PiccaliTwitterのdelegate ここまで
 @end

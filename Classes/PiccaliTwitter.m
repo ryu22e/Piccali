@@ -10,6 +10,11 @@
 
 
 @implementation PiccaliTwitter
+@synthesize twitterEngine;
+
+- (BOOL) isAuthorized {
+    return [twitterEngine isAuthorized];
+}
 
 - (void)post:(NSString *)message {
     NSLog(@"username:%@", self.username);

@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PiccaliPostTarget.h"
+#import "PiccaliPostDelegate.h"
 #import "PiccaliTwitter.h"
 #import "PiccaliCommon.h"
 #import "PiccaliAPIKey.h"
+#import "XAuthTwitterEngine.h"
 #import "OAMutableURLRequest.h"
 #import "ASIFormDataRequest.h"
 #import "JSON.h"
@@ -20,8 +23,10 @@
 #define TWITPIC_API_METHOD @"POST"
 #define TWITPIC_COMPRESSION_QUALITY 0.8
 
-@interface PiccaliTwitpic : PiccaliTwitter {
-    NSString *msg;
+// TODO PiccaliTwitterを継承させるのをやめる。
+@interface PiccaliTwitpic : PiccaliPostTarget <PiccaliPostDelegate> {
+    @private
+    PiccaliTwitter *piccaliTwitter;
 }
 - (void)post:(UIImage *)image message:(NSString *)message;
 @end
