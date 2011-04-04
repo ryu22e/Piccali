@@ -342,7 +342,7 @@
 					<object class="IBUIActivityIndicatorView" id="884408122">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{47, 2}, {37, 37}}</string>
+						<string key="NSFrame">{{94, 6}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="283569600"/>
@@ -354,7 +354,7 @@
 					<object class="IBUIActivityIndicatorView" id="394776931">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{47, 39}, {37, 37}}</string>
+						<string key="NSFrame">{{94, 43}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="591049109"/>
@@ -416,7 +416,7 @@
 					<object class="IBUIImageView" id="1065118634">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{46, 4}, {38, 35}}</string>
+						<string key="NSFrame">{{93, 8}, {38, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="884408122"/>
@@ -430,7 +430,7 @@
 					<object class="IBUIImageView" id="509163359">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{46, 6}, {38, 35}}</string>
+						<string key="NSFrame">{{93, 7}, {38, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -443,7 +443,7 @@
 					<object class="IBUIImageView" id="783857133">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{46, 41}, {38, 35}}</string>
+						<string key="NSFrame">{{93, 45}, {38, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -453,7 +453,7 @@
 					<object class="IBUIImageView" id="882066082">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{46, 39}, {38, 35}}</string>
+						<string key="NSFrame">{{93, 43}, {38, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="763997317"/>
@@ -1132,8 +1132,8 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{24, 18}</string>
 				<string>{28, 28}</string>
-				<string>{57, 57}</string>
-				<string>{57, 57}</string>
+				<string>{300, 300}</string>
+				<string>{302, 284}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">300</string>
