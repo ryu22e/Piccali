@@ -53,6 +53,22 @@
     return imageSize;
 }
 
+- (UIImage *)resizeImage {
+    // UIImageのサイズを変更する。
+    UIImage *image = imageView.image;
+    if (!image) {
+        return nil;
+    }
+    NSInteger imageSize = [self getImageSize];
+    CGSize size = CGSizeMake(imageSize, imageSize);
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return resizedImage;
+}
+
 - (BOOL) hasTargetChannel {
     return targetChannel != nil;
 }
@@ -230,6 +246,8 @@
     BOOL postTwitter = t_switch.enabled && [t_switch isOn];
     BOOL postWassr = w_switch.enabled && [w_switch isOn];
     
+    UIImage *resizedImage = [self resizeImage];
+    
     [t_switch setEnabled:NO];
     [w_switch setEnabled:NO];
     [selectWassrTargetButton setEnabled:NO];
@@ -245,7 +263,7 @@
         [twitterIndicator setHidden:NO];
         self.requestTwitter = [[PiccaliTwitpic alloc] init];
         [self.requestTwitter setDelegate:self];
-        [self.requestTwitter post:imageView.image message:postText.text];
+        [self.requestTwitter post:resizedImage message:postText.text];
     }
     if (postWassr) {
         // Wassrにpostする。
@@ -254,9 +272,9 @@
         self.requestWassr = [[PiccaliWassr alloc] init];
         [self.requestWassr setDelegate:self];
         if ([self hasTargetChannel]) {
-            [self.requestWassr post:imageView.image message:postText.text channel:[targetChannel objectForKey:@"name_en"]];
+            [self.requestWassr post:resizedImage message:postText.text channel:[targetChannel objectForKey:@"name_en"]];
         } else {
-            [self.requestWassr post:imageView.image message:postText.text];
+            [self.requestWassr post:resizedImage message:postText.text];
         }
     }
     
@@ -323,16 +341,7 @@
 {
     [self dismissModalViewControllerAnimated:YES];
     
-    // UIImageのサイズを変更する。
-    UIImage *image = img;
-    NSInteger imageSize = [self getImageSize];
-    CGSize size = CGSizeMake(imageSize, imageSize);
-    UIGraphicsBeginImageContext(size);
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    imageView.image = resizedImage;
+    imageView.image = img;
     
     [self changeStatus];
 }
