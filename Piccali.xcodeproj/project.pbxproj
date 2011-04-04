@@ -314,7 +314,6 @@
 			children = (
 				854455C11344A30200D9B205 /* Security.framework */,
 				85445599134477AE00D9B205 /* Security.framework */,
-				85EA47331340BF7E00F20B8B /* Icon.png */,
 				8577099A1338D92E00312C29 /* libOAuth.a */,
 				85D745F81337B3A600145F3B /* libxml2.dylib */,
 				85DE4CC9133794CB00E29B2B /* libz.dylib */,
@@ -350,6 +349,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				85EA47331340BF7E00F20B8B /* Icon.png */,
 				851F949A134224CD00EF0A00 /* post_error.png */,
 				851F949B134224CD00EF0A00 /* post_success.png */,
 				851F949213420BB400EF0A00 /* camera.png */,
