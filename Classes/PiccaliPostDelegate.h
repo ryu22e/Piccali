@@ -15,6 +15,7 @@
 - (void)failedToPostTwitpic:(ASIHTTPRequest *)request;
 - (void)finishedToPostTwitpic:(ASIHTTPRequest *)request;
 - (void)finishedToPostTwitter:(NSString *)connectionIdentifier;
+- (void)failedToPostTwitter:(NSError *)error;
 - (void)failedToPostWassr:(ASIHTTPRequest *)request;
 - (void)finishedToPostWassr:(ASIHTTPRequest *)request;
 

@@ -39,9 +39,6 @@
 - (id)init {
     self = [super init];
     if (self) {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        self.username = [userDefaults objectForKey:CONFIG_TWITTER_USERNAME];
-        self.password = [SFHFKeychainUtils getPasswordForUsername:self.username andServiceName:SERVICENAME_TWITTER error:NULL];
         piccaliTwitter = [[PiccaliTwitter alloc] init];
         piccaliTwitter.delegate = self;
     }
@@ -58,9 +55,7 @@
 }
 
 - (void)post:(UIImage *)image message:(NSString *)message {
-    NSLog(@"username:%@", self.username);
-    NSLog(@"password:%@ ", self.password);
-    if ([self.username isEqual:@""] || [self.password isEqual:@""] || ![piccaliTwitter isAuthorized]) {
+    if (![piccaliTwitter.twitterEngine isAuthorized]) {
         [self.delegate failedAuthorizedTwitter:nil];
         return;
     }

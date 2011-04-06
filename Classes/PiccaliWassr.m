@@ -9,16 +9,10 @@
 #import "PiccaliWassr.h"
 
 @implementation PiccaliWassr
-@synthesize delegate;
-@synthesize username;
-@synthesize password;
 
 - (id)init {
     self = [super init];
     if (self) {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        self.username = [userDefaults objectForKey:CONFIG_WASSR_USERNAME];
-        self.password = [SFHFKeychainUtils getPasswordForUsername:self.username andServiceName:SERVICENAME_WASSR error:NULL];
     }
     return self;
 }
@@ -28,6 +22,7 @@
 }
 
 - (void)post:(UIImage *)image message:(NSString *)message channel:(NSString *)channel {
+    
     NSString *statusOrBody;
     NSString *source;
     NSURL *url;
@@ -44,8 +39,11 @@
     }
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     
-    [request setUsername:self.username];
-    [request setPassword:self.password];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [userDefaults objectForKey:CONFIG_WASSR_USERNAME];
+    NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:SERVICENAME_WASSR error:NULL];
+    [request setUsername:username];
+    [request setPassword:password];
     if (source != nil) {
         [request addPostValue:WASSR_API_SOURCE forKey:@"source"];
     }

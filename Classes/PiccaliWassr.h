@@ -21,16 +21,8 @@
 #define WASSR_API_SOURCE @"Piccali"
 #define WASSR_COMPRESSION_QUALITY 0.8
 
-@interface PiccaliWassr : NSObject {
-@private
-    id<PiccaliPostDelegate> delegate;
-    NSString *username;
-    NSString *password;
-}
-@property (nonatomic, assign) id<PiccaliPostDelegate> delegate;
-@property (nonatomic, retain) NSString *username;
-@property (nonatomic, retain) NSString *password;
+@interface PiccaliWassr : PiccaliPostTarget {
 
-- (void)post:(UIImage *)image message:(NSString *)message;
+}
 - (void)post:(UIImage *)image message:(NSString *)message channel:(NSString *)channel;
 @end
