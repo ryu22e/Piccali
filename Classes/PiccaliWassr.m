@@ -51,8 +51,7 @@
     }
     [request addPostValue:message forKey:statusOrBody];
     if (image != nil) {
-        NSData *imageData = [[[NSData alloc] initWithData:UIImagePNGRepresentation(image)] autorelease];
-        [request setData:imageData forKey:@"image"];
+        [request setData:UIImageJPEGRepresentation(image, WASSR_COMPRESSION_QUALITY) forKey:@"image"];
     }
     
     request.delegate = self;

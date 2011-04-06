@@ -19,6 +19,7 @@
 #define WASSR_CHANNEL_LIST_API_URL @"http://api.wassr.jp/channel_user/user_list.json?login_id=%@"
 #define WASSR_API_METHOD @"POST"
 #define WASSR_API_SOURCE @"Piccali"
+#define WASSR_COMPRESSION_QUALITY 0.8
 
 @interface PiccaliWassr : NSObject {
 @private
