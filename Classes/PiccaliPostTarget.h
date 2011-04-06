@@ -12,10 +12,6 @@
 @interface PiccaliPostTarget : NSObject {
 @private
     id<PiccaliPostDelegate> delegate;
-    NSString *username;
-    NSString *password;
 }
 @property (nonatomic, assign) id<PiccaliPostDelegate> delegate;
-@property (nonatomic, retain) NSString *username;
-@property (nonatomic, retain) NSString *password;
 @end

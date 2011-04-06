@@ -187,6 +187,11 @@
     [self notifyResultTwitter:NO];
 }
 
+- (void)failedToPostTwitter:(NSError *)error {
+    // Twitterへの投稿に失敗したことを画面に通知する。
+    [self notifyResultTwitter:YES];
+}
+
 - (void)finishedToPostTwitter:(NSString *)connectionIdentifier {
     // Twitterへの投稿に成功したことを画面に通知する。
     [self notifyResultTwitter:NO];
@@ -261,16 +266,20 @@
         // Twitpicにpostする。
         [twitterIndicator startAnimating];
         [twitterIndicator setHidden:NO];
-        self.requestTwitter = [[PiccaliTwitpic alloc] init];
-        [self.requestTwitter setDelegate:self];
+        if (!self.requestTwitter) {
+            self.requestTwitter = [[PiccaliTwitpic alloc] init];
+            [self.requestTwitter setDelegate:self];
+        }
         [self.requestTwitter post:resizedImage message:postText.text];
     }
     if (postWassr) {
         // Wassrにpostする。
         [wassrIndicator startAnimating];
         [wassrIndicator setHidden:NO];
-        self.requestWassr = [[PiccaliWassr alloc] init];
-        [self.requestWassr setDelegate:self];
+        if (!self.requestWassr) {
+            self.requestWassr = [[PiccaliWassr alloc] init];
+            [self.requestWassr setDelegate:self];
+        }
         if ([self hasTargetChannel]) {
             [self.requestWassr post:resizedImage message:postText.text channel:[targetChannel objectForKey:@"name_en"]];
         } else {

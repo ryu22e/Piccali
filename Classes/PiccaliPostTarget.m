@@ -11,7 +11,5 @@
 
 @implementation PiccaliPostTarget
 @synthesize delegate;
-@synthesize username;
-@synthesize password;
 
 @end
