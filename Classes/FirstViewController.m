@@ -59,10 +59,34 @@
     if (!image) {
         return nil;
     }
+    // 設定画面で設定した画像の最大幅を取得する。
     NSInteger imageSize = [self getImageSize];
-    CGSize size = CGSizeMake(imageSize, imageSize);
-    UIGraphicsBeginImageContext(size);
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    NSInteger newHeight = imageSize;
+    NSInteger newWidth = imageSize;
+    
+    // 画像のリサイズ前の幅を取得する。
+    CGSize currSize = image.size;
+    
+    // 最大幅とリサイズ前の幅が全く同じであれば、リサイズの必要がないので元の画像をそのまま返す。
+    if (newWidth == currSize.width && newHeight == currSize.height) {
+        return image;
+    }
+    
+    // 「最大幅 < リサイズ前の幅」の場合のみリサイズする。
+    if (imageSize < currSize.width) {
+        newWidth = imageSize;
+    } else {
+        newWidth = currSize.width;
+    }
+    if (imageSize < currSize.height) {
+        newHeight = imageSize;
+    } else {
+        newHeight = currSize.height;
+    }
+    
+    CGSize newSize = CGSizeMake(newWidth, newHeight);
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
