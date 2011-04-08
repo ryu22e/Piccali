@@ -6,7 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 // PiccaliAPIKey.hというAPI Keyを定義したファイルもあるけど、githubに公開するとセキュリティ上の問題がありそうなので、これは非公開。
-#define PICCALI_VERSION @"1.0.1"
+#define PICCALI_VERSION @"1.0.2"
 
 #define SERVICENAME_TWITTER @"PiccaliTwitter"
 #define SERVICENAME_WASSR @"PiccaliWassr"
@@ -19,6 +19,7 @@
 #define CONFIG_TWITTER_PASSWORD @"config_twitter_password"
 #define CONFIG_WASSR_PASSWORD @"config_wassr_password"
 #define CONFIG_IMAGE_SIZE @"config_image_size"
+#define CONFIG_SAVE_IMAGE @"config_save_image"
 #define CONFIG_CACHED_XAUTH_ACCESS_TOKEN_KEY @"cached_xauth_access_token_key"
 
 #define TWITTER_ENABLE @"twitter_enable"
