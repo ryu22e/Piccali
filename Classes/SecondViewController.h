@@ -25,6 +25,7 @@
 	UITextField *w_usernameField;
 	UITextField *w_passwordField;
     UITextField *imageSizeField;
+    UISwitch *saveImageSwitch;
     XAuthTwitterEngine *twitterEngine;
 }
 @property(nonatomic, retain) UITableView *configView;
@@ -35,5 +36,6 @@
 @property(nonatomic, retain) UITextField *w_passwordField;
 @property(nonatomic, retain) UISwitch *w_switch;
 @property(nonatomic, retain) UITextField *imageSizeField;
+@property(nonatomic, retain) UISwitch *saveImageSwitch;
 @property(nonatomic, retain) XAuthTwitterEngine *twitterEngine;
 @end

@@ -17,6 +17,7 @@
 @synthesize w_usernameField;
 @synthesize w_passwordField;
 @synthesize imageSizeField;
+@synthesize saveImageSwitch;
 @synthesize twitterEngine;
 
 // UITableViewのdelegate ここから
@@ -32,6 +33,9 @@
             return @"画像サイズ";
             break;
         case 3:
+            return @"画像保存";
+            break;
+        case 4:
             return @"";
             break;
     }
@@ -46,7 +50,7 @@
 		cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
 		[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-	if ([indexPath section] < 4) {
+	if ([indexPath section] < 5) {
 		switch ([indexPath row]) {
 	        case 0: {
 				switch ([indexPath section]) {
@@ -63,6 +67,10 @@
                         [cell addSubview:imageSizeField];
                         break;
                     case 3:
+                        [[cell textLabel] setText:@"投稿時に画像を保存する"];
+                        [cell addSubview:saveImageSwitch];
+                        break;
+                    case 4:
                         [[cell textLabel] setText:@"About Piccali"];
                         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                         break;
@@ -106,6 +114,8 @@
         return 1;
     } else if (section == 3) {
         return 1;
+    } else if (section == 4) {
+        return 1;
 	} else {
 		return 0;
 	}
@@ -142,6 +152,8 @@
             }
             break;
         case 3:
+            break;
+        case 4:
             [self.navigationController pushViewController:[[[PiccaliAboutController alloc] initWithNibName:@"PiccaliAboutController" bundle:nil] autorelease] animated:YES];
             break;
         default:
@@ -192,6 +204,9 @@
     if ([uiswitch isEqual:w_switch]) {
         [userDefaults setBool:[w_switch isOn] forKey:CONFIG_WASSR_ENABLE];
     }
+    if ([uiswitch isEqual:saveImageSwitch]) {
+        [userDefaults setBool:[saveImageSwitch isOn] forKey:CONFIG_SAVE_IMAGE];
+    }
 }
 // UISwitchのdelegate ここから
 
@@ -223,14 +238,14 @@
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
+ - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+ self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+ if (self) {
+ // Custom initialization.
+ }
+ return self;
+ }
+ */
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 //- (void)loadView {
@@ -251,7 +266,6 @@
     [w_switch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
     [w_switch setOn:[userDefaults boolForKey:CONFIG_WASSR_ENABLE] animated:NO];
     
-    
     imageSizeField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
     [imageSizeField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     [imageSizeField setAutocorrectionType:UITextAutocorrectionTypeNo];
@@ -266,6 +280,9 @@
         size = [[NSString alloc] initWithFormat:@"%d",DEFAULT_IMAGE_SIZE];;
     }
     [imageSizeField setText:size];
+    saveImageSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(208, 9, 0, 0)];
+    [saveImageSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    [saveImageSwitch setOn:[userDefaults boolForKey:CONFIG_SAVE_IMAGE] animated:NO];
     
     twitterEngine = [[XAuthTwitterEngine alloc] initXAuthWithDelegate:self];
     twitterEngine.consumerKey = TWITTER_CONSUMER_KEY;
@@ -273,12 +290,12 @@
 }
 
 /*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
+ // Override to allow orientations other than the default portrait orientation.
+ - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ // Return YES for supported orientations.
+ return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ }
+ */
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -302,6 +319,7 @@
     [w_switch release];
     [w_usernameField release];
     [w_passwordField release];
+    [saveImageSwitch release];
     [imageSizeField release];
     [twitterEngine release];
     [super dealloc];
