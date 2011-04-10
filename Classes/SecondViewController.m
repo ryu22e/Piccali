@@ -178,10 +178,12 @@
 
 - (BOOL) textFieldEditingDidBegin: (UITextField *)textField {
     NSIndexPath *indexPath;
+    UITableViewScrollPosition scrollPosition;
     if ([textField isEqual:imageSizeField]) {
         indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        scrollPosition = UITableViewScrollPositionTop;
     }
-	[configView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+	[configView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:YES];
 	return YES;
 }
 
