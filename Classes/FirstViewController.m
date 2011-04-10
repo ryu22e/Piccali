@@ -97,6 +97,25 @@
     return targetChannel != nil;
 }
 
+// UIImageWriteToSavedPhotosAlbumのコールバック ここから
+- (void) savingImageIsFinished:(UIImage *)_image 
+      didFinishSavingWithError:(NSError *)_error
+                   contextInfo:(void *)_contextInfo
+{
+    NSLog(@"Finished to save image file."); //仮にコンソールに表示する
+}
+// UIImageWriteToSavedPhotosAlbumのコールバック ここまで
+
+- (void)saveImage:(UIImage *)image {
+    NSLog(@"saveImage start.");
+
+    hasNewImage = NO;
+    
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(savingImageIsFinished:didFinishSavingWithError:contextInfo:), nil);
+    
+    NSLog(@"saveImage end.");
+}
+
 - (void)changeStatus {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     // 設定画面でONになっている場合のみスイッチを有効にする。
@@ -286,6 +305,14 @@
     [cameraButton setEnabled:NO];
     [libraButton setEnabled:NO];
     
+    if (hasNewImage) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        // 撮影した写真を保存する。
+        if ([userDefaults boolForKey:CONFIG_SAVE_IMAGE]) {
+            [self saveImage:imageView.image];
+        }
+    }
+    
     if (postTwitter) {
         // Twitpicにpostする。
         [twitterIndicator startAnimating];
@@ -375,6 +402,8 @@
     [self dismissModalViewControllerAnimated:YES];
     
     imageView.image = img;
+    
+    hasNewImage = (picker.sourceType == UIImagePickerControllerSourceTypeCamera);
     
     [self changeStatus];
 }

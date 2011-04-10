@@ -15,6 +15,8 @@
 #import "ChannelViewController.h"
 #import "JSON.h"
 
+#define LIBRARY_COMPRESSION_QUALITY 1.0
+
 @interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, ChannelViewControllerDelegate, PiccaliPostDelegate>{
     @private
     IBOutlet UIImageView *finishedPostTwitter;
@@ -39,6 +41,7 @@
     ChannelViewController *channelView;
     id requestTwitter;
     id requestWassr;
+    BOOL hasNewImage;
     NSInteger errorCount;
 }
 @property (nonatomic, retain) UIImageView *finishedPostTwitter;
