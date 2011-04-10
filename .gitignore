@@ -13,3 +13,6 @@ build/*
 Thumbs.db
 
 Classes/PiccaliAPIKey.h
+
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
