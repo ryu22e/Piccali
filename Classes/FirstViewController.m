@@ -67,8 +67,8 @@
     // 画像のリサイズ前の幅を取得する。
     CGSize currSize = image.size;
     
-    // 最大幅とリサイズ前の幅が全く同じであれば、リサイズの必要がないので元の画像をそのまま返す。
-    if (newWidth == currSize.width && newHeight == currSize.height) {
+    // リサイズ前の幅が最大幅以下であれば、リサイズの必要がないので元の画像をそのまま返す。
+    if (currSize.width <= newWidth && currSize.height <= newHeight) {
         return image;
     }
     
