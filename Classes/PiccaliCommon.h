@@ -6,7 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 // PiccaliAPIKey.hというAPI Keyを定義したファイルもあるけど、githubに公開するとセキュリティ上の問題がありそうなので、これは非公開。
-#define PICCALI_VERSION @"1.0.2"
+#define PICCALI_VERSION @"1.0.3"
 
 #define SERVICENAME_TWITTER @"PiccaliTwitter"
 #define SERVICENAME_WASSR @"PiccaliWassr"
