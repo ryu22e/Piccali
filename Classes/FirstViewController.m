@@ -61,8 +61,8 @@
     }
     // 設定画面で設定した画像の最大幅を取得する。
     NSInteger imageSize = [self getImageSize];
-    NSInteger newHeight = imageSize;
-    NSInteger newWidth = imageSize;
+    CGFloat newHeight = imageSize;
+    CGFloat newWidth = imageSize;
     
     // 画像のリサイズ前の幅を取得する。
     CGSize currSize = image.size;
