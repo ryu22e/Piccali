@@ -43,6 +43,7 @@
     id requestWassr;
     BOOL hasNewImage;
     NSInteger errorCount;
+    UIImage *postImage;
 }
 @property (nonatomic, retain) UIImageView *finishedPostTwitter;
 @property (nonatomic, retain) UIImageView *finishedPostWassr;
@@ -66,4 +67,5 @@
 @property (nonatomic, retain) ChannelViewController *channelView;
 @property (nonatomic, retain) id requestTwitter;
 @property (nonatomic, retain) id requestWassr;
+@property (nonatomic, retain) UIImage *postImage;
 @end
