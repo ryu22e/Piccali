@@ -83,6 +83,7 @@
 		85DE4CC8133792C700E29B2B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DE4CC7133792C700E29B2B /* Reachability.m */; };
 		85DE4CCA133794CC00E29B2B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DE4CC9133794CB00E29B2B /* libz.dylib */; };
 		85EA473B1340C20500F20B8B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 85EA47331340BF7E00F20B8B /* Icon.png */; };
+		85EFC41313533F80004963B8 /* GTMUIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 85EFC41113533F80004963B8 /* GTMUIImage+Resize.m */; };
 		85F4CCED13463C7900DE5041 /* PiccaliWassr.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F4CCEC13463C7900DE5041 /* PiccaliWassr.m */; };
 /* End PBXBuildFile section */
 
@@ -237,6 +238,9 @@
 		85DE4CC9133794CB00E29B2B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		85EA47331340BF7E00F20B8B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		85EF67AE132E6EC400DA7BB6 /* PiccaliCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliCommon.h; sourceTree = "<group>"; };
+		85EFC41113533F80004963B8 /* GTMUIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMUIImage+Resize.m"; sourceTree = "<group>"; };
+		85EFC41613533FC6004963B8 /* GTMUIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMUIImage+Resize.h"; sourceTree = "<group>"; };
+		85EFC4171353400F004963B8 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDefines.h; path = ../GTMDefines.h; sourceTree = "<group>"; };
 		85F4CCEB13463C7800DE5041 /* PiccaliWassr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliWassr.h; sourceTree = "<group>"; };
 		85F4CCEC13463C7900DE5041 /* PiccaliWassr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiccaliWassr.m; sourceTree = "<group>"; };
 		85F4CCEE1346412100DE5041 /* PiccaliPostDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliPostDelegate.h; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 				85D48A9C13477626001B440B /* PiccaliTwitterConfig.h */,
 				85D48A9D13477626001B440B /* PiccaliTwitterConfig.m */,
 				85D48AA1134776FF001B440B /* PiccaliWassrConfig.h */,
+				85EFC4171353400F004963B8 /* GTMDefines.h */,
 				85D48AA2134776FF001B440B /* PiccaliWassrConfig.m */,
 				85D48A9713477020001B440B /* PiccaliAboutController.h */,
 				85D48A9813477020001B440B /* PiccaliAboutController.m */,
@@ -314,8 +319,8 @@
 			children = (
 				854455C11344A30200D9B205 /* Security.framework */,
 				85445599134477AE00D9B205 /* Security.framework */,
-				8577099A1338D92E00312C29 /* libOAuth.a */,
 				85D745F81337B3A600145F3B /* libxml2.dylib */,
+				8577099A1338D92E00312C29 /* libOAuth.a */,
 				85DE4CC9133794CB00E29B2B /* libz.dylib */,
 				85DE4CA81337910C00E29B2B /* MobileCoreServices.framework */,
 				85DE4CA61337910400E29B2B /* SystemConfiguration.framework */,
@@ -324,6 +329,7 @@
 				85DE4C1A13378E1900E29B2B /* SystemConfiguration.framework */,
 				85DE4C1613378D7D00E29B2B /* CFNetwork.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
+				85EFC41513533F84004963B8 /* google-toolbox-for-mac-read-only */,
 				854455C81344A85D00D9B205 /* SFHFKeychainUtils */,
 				85896258133F729700ED1034 /* json-framework */,
 				85D745C11337B2A900145F3B /* XAuthTwitterEngine */,
@@ -538,6 +544,15 @@
 			name = ASIHTTPRequest;
 			sourceTree = "<group>";
 		};
+		85EFC41513533F84004963B8 /* google-toolbox-for-mac-read-only */ = {
+			isa = PBXGroup;
+			children = (
+				85EFC41613533FC6004963B8 /* GTMUIImage+Resize.h */,
+				85EFC41113533F80004963B8 /* GTMUIImage+Resize.m */,
+			);
+			name = "google-toolbox-for-mac-read-only";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -704,6 +719,7 @@
 				85D48A9A13477020001B440B /* PiccaliAboutController.m in Sources */,
 				85D48A9F13477626001B440B /* PiccaliTwitterConfig.m in Sources */,
 				85D48AA4134776FF001B440B /* PiccaliWassrConfig.m in Sources */,
+				85EFC41313533F80004963B8 /* GTMUIImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +765,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 					"\"$(SRCROOT)/OAuthConsumer\"",
+					"\"$(SRCROOT)\"",
 				);
 				INFOPLIST_FILE = "Piccali-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
@@ -772,6 +789,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 					"\"$(SRCROOT)/OAuthConsumer\"",
+					"\"$(SRCROOT)\"",
 				);
 				INFOPLIST_FILE = "Piccali-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
