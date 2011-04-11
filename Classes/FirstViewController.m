@@ -31,6 +31,7 @@
 @synthesize channelView;
 @synthesize requestTwitter;
 @synthesize requestWassr;
+@synthesize postImage;
 
 - (NSInteger) getMaxLength {
     NSInteger maxLength;
@@ -53,9 +54,8 @@
     return imageSize;
 }
 
-- (UIImage *)resizeImage {
+- (UIImage *)resizeImage:(UIImage *)image {
     // UIImageのサイズを変更する。
-    UIImage *image = imageView.image;
     if (!image) {
         return nil;
     }
@@ -173,6 +173,7 @@
             // 結果がエラーになっている処理がなければ、投稿内容をクリアする。
             if (self.errorPostTwitter.hidden && self.errorPostWassr.hidden) {
                 postText.text = @"";
+                self.postImage = nil;
                 imageView.image = nil;
             }
             [self changeStatus];
@@ -294,7 +295,7 @@
     BOOL postTwitter = t_switch.enabled && [t_switch isOn];
     BOOL postWassr = w_switch.enabled && [w_switch isOn];
     
-    UIImage *resizedImage = [self resizeImage];
+    UIImage *resizedImage = [self resizeImage:self.postImage];
     
     [t_switch setEnabled:NO];
     [w_switch setEnabled:NO];
@@ -309,7 +310,7 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         // 撮影した写真を保存する。
         if ([userDefaults boolForKey:CONFIG_SAVE_IMAGE]) {
-            [self saveImage:imageView.image];
+            [self saveImage:self.postImage];
         }
     }
     
@@ -401,7 +402,8 @@
 {
     [self dismissModalViewControllerAnimated:YES];
     
-    imageView.image = img;
+    self.postImage = img;
+    imageView.image = [self resizeImage:img];
     
     hasNewImage = (picker.sourceType == UIImagePickerControllerSourceTypeCamera);
     
@@ -409,6 +411,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    if (self.postImage) {
+        imageView.image = [self resizeImage:self.postImage];
+    }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [t_switch setOn:[userDefaults boolForKey:TWITTER_ENABLE]];
     [w_switch setOn:[userDefaults boolForKey:WASSR_ENABLE]];
@@ -466,6 +471,7 @@
     [channelView release];
     [self.requestTwitter release];
     [self.requestWassr release];
+    [self.postImage release];
     [super dealloc];
 }
 
