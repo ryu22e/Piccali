@@ -89,7 +89,7 @@
     if (url) {
         // TwitpicのURLをTwitterに投稿する。
         NSLog(@"url:%@", url);
-        NSString *message = [NSString stringWithFormat:@"%@%@", [dic objectForKey:@"text"], url];
+        NSString *message = [NSString stringWithFormat:@"%@ %@", [dic objectForKey:@"text"], url];
         [self post:message];
     } else {
         // Twitpicへの投稿に成功したことを通知する。
