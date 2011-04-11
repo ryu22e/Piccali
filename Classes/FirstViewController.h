@@ -14,6 +14,7 @@
 #import "PiccaliCommon.h"
 #import "ChannelViewController.h"
 #import "JSON.h"
+#import "GTMUIImage+Resize.h"
 
 #define LIBRARY_COMPRESSION_QUALITY 1.0
 

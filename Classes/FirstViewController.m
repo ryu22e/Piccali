@@ -70,27 +70,10 @@
     // リサイズ前の幅が最大幅以下であれば、リサイズの必要がないので元の画像をそのまま返す。
     if (currSize.width <= newWidth && currSize.height <= newHeight) {
         return image;
-    }
-    
-    // 「最大幅 < リサイズ前の幅」の場合のみリサイズする。
-    if (imageSize < currSize.width) {
-        newWidth = imageSize;
     } else {
-        newWidth = currSize.width;
+        CGSize newSize = CGSizeMake(newWidth, newHeight);
+        return [image gtm_imageByResizingToSize:newSize preserveAspectRatio:YES trimToFit:NO];
     }
-    if (imageSize < currSize.height) {
-        newHeight = imageSize;
-    } else {
-        newHeight = currSize.height;
-    }
-    
-    CGSize newSize = CGSizeMake(newWidth, newHeight);
-    UIGraphicsBeginImageContext(newSize);
-    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return resizedImage;
 }
 
 - (BOOL) hasTargetChannel {
