@@ -162,6 +162,7 @@
 						<string key="NSFrame">{{138, 281}, {130, 130}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -1133,7 +1134,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<string>{24, 18}</string>
 				<string>{28, 28}</string>
 				<string>{300, 300}</string>
-				<string>{302, 284}</string>
+				<string>{300, 300}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">300</string>
