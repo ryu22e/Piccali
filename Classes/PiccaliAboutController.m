@@ -46,7 +46,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    versionNumber.text = PICCALI_VERSION;
+    versionNumber.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     [self setTitle:TITLE];
 }
 
