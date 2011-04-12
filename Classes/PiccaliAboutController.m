@@ -46,7 +46,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    versionNumber.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    versionNumber.text = [NSString stringWithFormat:@"version %@", version];
     NSString *title = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
     appName.text = title;
     [self setTitle:[NSString stringWithFormat:@"About %@", title]];
