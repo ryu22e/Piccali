@@ -47,7 +47,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     versionNumber.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-    [self setTitle:TITLE];
+    NSString *title = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+    appName.text = title;
+    [self setTitle:[NSString stringWithFormat:@"About %@", title]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
