@@ -24,9 +24,9 @@
 
 - (void)cleanup {
     @synchronized(self) {
-        [self.navigationItem.rightBarButtonItem setEnabled:YES];
         [indicator stopAnimating];
         [indicator setHidden:YES];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }
 }
 
@@ -126,7 +126,7 @@
 - (void)loginAndSaveClicked:(id)sender {
     [self.view endEditing:YES];
     
-    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     [indicator startAnimating];
     [indicator setHidden:NO];
     
@@ -168,6 +168,7 @@
         @synchronized(self) {
             // ユーザー名とパスワードを保存する。
             [self save:t_usernameField.text AndPassword:t_passwordField.text];
+            [self cleanup];
             // 前の画面に戻る。
             [self.navigationController popViewControllerAnimated:YES];
         }

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "ChannelViewControllerDelegate.h"
 #import "ChannelViewController.h"
 #import "PiccaliTwitpic.h"

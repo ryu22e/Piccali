@@ -159,6 +159,7 @@
                 self.postImage = nil;
                 imageView.image = nil;
             }
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             [self changeStatus];
         }
     }
@@ -270,6 +271,8 @@
 - (IBAction)postClicked:(id)sender {
     NSLog(@"postClicked start.");
     
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    
     [self.view endEditing:YES];
     
     [self resetTwitterIndicator];
@@ -279,15 +282,6 @@
     BOOL postWassr = w_switch.enabled && [w_switch isOn];
     
     UIImage *resizedImage = [self resizeImage:self.postImage];
-    
-    [t_switch setEnabled:NO];
-    [w_switch setEnabled:NO];
-    [selectWassrTargetButton setEnabled:NO];
-    [postText setEditable:NO];
-    [postButton setEnabled:NO];
-    [cancelButton setEnabled:NO];
-    [cameraButton setEnabled:NO];
-    [libraButton setEnabled:NO];
     
     if (hasNewImage) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -425,6 +419,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 本文入力欄を角丸にする。
+    postText.layer.cornerRadius = 10;
+    postText.clipsToBounds = TRUE;
 }
 
 /*
