@@ -240,7 +240,7 @@
 		85EF67AE132E6EC400DA7BB6 /* PiccaliCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliCommon.h; sourceTree = "<group>"; };
 		85EFC41113533F80004963B8 /* GTMUIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMUIImage+Resize.m"; sourceTree = "<group>"; };
 		85EFC41613533FC6004963B8 /* GTMUIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMUIImage+Resize.h"; sourceTree = "<group>"; };
-		85EFC4171353400F004963B8 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDefines.h; path = ../GTMDefines.h; sourceTree = "<group>"; };
+		85EFC4171353400F004963B8 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		85F4CCEB13463C7800DE5041 /* PiccaliWassr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliWassr.h; sourceTree = "<group>"; };
 		85F4CCEC13463C7900DE5041 /* PiccaliWassr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiccaliWassr.m; sourceTree = "<group>"; };
 		85F4CCEE1346412100DE5041 /* PiccaliPostDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiccaliPostDelegate.h; sourceTree = "<group>"; };
@@ -294,7 +294,6 @@
 				85D48A9C13477626001B440B /* PiccaliTwitterConfig.h */,
 				85D48A9D13477626001B440B /* PiccaliTwitterConfig.m */,
 				85D48AA1134776FF001B440B /* PiccaliWassrConfig.h */,
-				85EFC4171353400F004963B8 /* GTMDefines.h */,
 				85D48AA2134776FF001B440B /* PiccaliWassrConfig.m */,
 				85D48A9713477020001B440B /* PiccaliAboutController.h */,
 				85D48A9813477020001B440B /* PiccaliAboutController.m */,
@@ -547,6 +546,7 @@
 		85EFC41513533F84004963B8 /* google-toolbox-for-mac-read-only */ = {
 			isa = PBXGroup;
 			children = (
+				85EFC4171353400F004963B8 /* GTMDefines.h */,
 				85EFC41613533FC6004963B8 /* GTMUIImage+Resize.h */,
 				85EFC41113533F80004963B8 /* GTMUIImage+Resize.m */,
 			);
