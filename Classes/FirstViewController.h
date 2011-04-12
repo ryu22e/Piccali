@@ -43,7 +43,6 @@
     id requestTwitter;
     id requestWassr;
     BOOL hasNewImage;
-    NSInteger errorCount;
     UIImage *postImage;
 }
 @property (nonatomic, retain) UIImageView *finishedPostTwitter;
