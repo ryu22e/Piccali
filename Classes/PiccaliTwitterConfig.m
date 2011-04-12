@@ -182,7 +182,7 @@
 - (void) twitterXAuthConnectionDidFailWithError: (NSError *)error;
 {
 	NSLog(@"Error: %@", error);
-    // TODO エラーになった旨を画面に出力する。
+    // エラーになった旨を画面に出力する。
     UIAlertView *alert = [[UIAlertView alloc] 
                           initWithTitle:@"" 
                           message:@"Twitterへのログインに失敗しました。" 
