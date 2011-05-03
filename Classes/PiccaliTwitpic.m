@@ -102,7 +102,7 @@
     NSError *error = [request error];
     NSLog(@"%@", [error localizedDescription]);
     // Twitterへの投稿に失敗したことを通知する。
-    [self.delegate failedToPostTwitpic:request];
+    [self.delegate failedToPostTwitpic:error];
 }
 // ASIHTTPRequestのdelegate ここまで
 
