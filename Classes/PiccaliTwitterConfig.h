@@ -11,6 +11,7 @@
 #import "PiccaliAPIKey.h"
 #import "SFHFKeychainUtils.h"
 #import "XAuthTwitterEngine.h"
+#import "Reachability.h"
 
 @interface PiccaliTwitterConfig : UIViewController {
     @private
@@ -19,7 +20,9 @@
     UITextField *t_usernameField;
 	UITextField *t_passwordField;
     XAuthTwitterEngine *twitterEngine;
+    Reachability *reachability;
 }
 @property (nonatomic, retain) UITableView *configView;
 @property (nonatomic, retain) UIActivityIndicatorView *indicator;
+@property (nonatomic, retain) Reachability *reachability;
 @end
