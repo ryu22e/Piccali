@@ -12,6 +12,7 @@
 @implementation PiccaliTwitterConfig
 @synthesize configView;
 @synthesize indicator;
+@synthesize reachability;
 
 - (void)changeStatus {
     // ユーザー名とパスワードが両方入力されている場合のみLogin & Saveボタンを有効にする。
@@ -124,15 +125,27 @@
 
 // UIBarButtonItemのdelegate ここから
 - (void)loginAndSaveClicked:(id)sender {
-    [self.view endEditing:YES];
-    
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    [indicator startAnimating];
-    [indicator setHidden:NO];
-    
-    // Twitterのアクセストークンを取得する。
-    NSLog(@"exchangeAccessTokenForUsername");
-    [twitterEngine exchangeAccessTokenForUsername:t_usernameField.text password:t_passwordField.text];
+    if ([reachability currentReachabilityStatus] == NotReachable) {
+        // ネットワークに接続できない場合はログイン処理を実行しない。
+        UIAlertView *alert = [[UIAlertView alloc] 
+                              initWithTitle:@"" 
+                              message:@"ネットワークに接続できません。" 
+                              delegate:nil 
+                              cancelButtonTitle:@"OK" 
+                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    } else {
+        [self.view endEditing:YES];
+        
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        [indicator startAnimating];
+        [indicator setHidden:NO];
+        
+        // Twitterのアクセストークンを取得する。
+        NSLog(@"exchangeAccessTokenForUsername");
+        [twitterEngine exchangeAccessTokenForUsername:t_usernameField.text password:t_passwordField.text];
+    }
 }
 // UIBarButtonItemのdelegate ここまで
 
@@ -266,6 +279,8 @@
     [self setTitle:@"Twitter"];
     
     [self changeStatus];
+    
+    self.reachability = [Reachability reachabilityForInternetConnection];
 }
 
 - (void)viewDidUnload
