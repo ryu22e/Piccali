@@ -230,7 +230,7 @@
 // PiccaliTwitpicのdelegate ここまで
 
 // PiccaliWassrのdelegate ここから
-- (void)failedToPostWassr:(ASIHTTPRequest *)request {
+- (void)failedToPostWassr:(NSError *)error {
     // Wassrへの投稿に失敗したことを画面に通知する。
     [self notifyResultWassr:YES];
 }
