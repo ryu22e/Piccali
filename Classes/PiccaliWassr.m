@@ -72,7 +72,7 @@
     NSError *error = [request error];
     NSLog(@"%@", [error localizedDescription]);
     // Wassrへの投稿に失敗したことを通知する。
-    [self.delegate failedToPostWassr:request];
+    [self.delegate failedToPostWassr:error];
 }
 // ASIHTTPRequestのdelegate ここまで
 @end
