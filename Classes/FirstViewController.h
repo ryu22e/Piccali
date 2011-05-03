@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "Reachability.h"
 #import "ChannelViewControllerDelegate.h"
 #import "ChannelViewController.h"
 #import "PiccaliTwitpic.h"
@@ -45,6 +46,7 @@
     id requestWassr;
     BOOL hasNewImage;
     UIImage *postImage;
+    Reachability *reachability;
 }
 @property (nonatomic, retain) UIImageView *finishedPostTwitter;
 @property (nonatomic, retain) UIImageView *finishedPostWassr;
@@ -69,4 +71,5 @@
 @property (nonatomic, retain) id requestTwitter;
 @property (nonatomic, retain) id requestWassr;
 @property (nonatomic, retain) UIImage *postImage;
+@property (nonatomic ,retain) Reachability *reachability;
 @end

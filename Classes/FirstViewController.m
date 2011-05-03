@@ -32,6 +32,7 @@
 @synthesize requestTwitter;
 @synthesize requestWassr;
 @synthesize postImage;
+@synthesize reachability;
 
 - (NSInteger) getMaxLength {
     NSInteger maxLength;
@@ -274,48 +275,60 @@
 - (IBAction)postClicked:(id)sender {
     NSLog(@"postClicked start.");
     
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    
-    [self.view endEditing:YES];
-    
-    [self resetTwitterIndicator];
-    [self resetWassrIndicator];
-    
-    BOOL postTwitter = t_switch.enabled && [t_switch isOn];
-    BOOL postWassr = w_switch.enabled && [w_switch isOn];
-    
-    UIImage *resizedImage = [self resizeImage:self.postImage];
-    
-    if (hasNewImage) {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        // 撮影した写真を保存する。
-        if ([userDefaults boolForKey:CONFIG_SAVE_IMAGE]) {
-            [self saveImage:self.postImage];
+    if ([reachability currentReachabilityStatus] == NotReachable) {
+        // ネットワークに接続できない場合は投稿処理を実行しない。
+        UIAlertView *alert = [[UIAlertView alloc] 
+                              initWithTitle:@"" 
+                              message:@"ネットワークに接続できません。" 
+                              delegate:nil 
+                              cancelButtonTitle:@"OK" 
+                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    } else {
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        
+        [self.view endEditing:YES];
+        
+        [self resetTwitterIndicator];
+        [self resetWassrIndicator];
+        
+        BOOL postTwitter = t_switch.enabled && [t_switch isOn];
+        BOOL postWassr = w_switch.enabled && [w_switch isOn];
+        
+        UIImage *resizedImage = [self resizeImage:self.postImage];
+        
+        if (hasNewImage) {
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            // 撮影した写真を保存する。
+            if ([userDefaults boolForKey:CONFIG_SAVE_IMAGE]) {
+                [self saveImage:self.postImage];
+            }
         }
-    }
-    
-    if (postTwitter) {
-        // Twitpicにpostする。
-        [twitterIndicator startAnimating];
-        [twitterIndicator setHidden:NO];
-        if (!self.requestTwitter) {
-            self.requestTwitter = [[PiccaliTwitpic alloc] init];
-            [self.requestTwitter setDelegate:self];
+        
+        if (postTwitter) {
+            // Twitpicにpostする。
+            [twitterIndicator startAnimating];
+            [twitterIndicator setHidden:NO];
+            if (!self.requestTwitter) {
+                self.requestTwitter = [[PiccaliTwitpic alloc] init];
+                [self.requestTwitter setDelegate:self];
+            }
+            [self.requestTwitter post:resizedImage message:postText.text];
         }
-        [self.requestTwitter post:resizedImage message:postText.text];
-    }
-    if (postWassr) {
-        // Wassrにpostする。
-        [wassrIndicator startAnimating];
-        [wassrIndicator setHidden:NO];
-        if (!self.requestWassr) {
-            self.requestWassr = [[PiccaliWassr alloc] init];
-            [self.requestWassr setDelegate:self];
-        }
-        if ([self hasTargetChannel]) {
-            [self.requestWassr post:resizedImage message:postText.text channel:[targetChannel objectForKey:@"name_en"]];
-        } else {
-            [self.requestWassr post:resizedImage message:postText.text];
+        if (postWassr) {
+            // Wassrにpostする。
+            [wassrIndicator startAnimating];
+            [wassrIndicator setHidden:NO];
+            if (!self.requestWassr) {
+                self.requestWassr = [[PiccaliWassr alloc] init];
+                [self.requestWassr setDelegate:self];
+            }
+            if ([self hasTargetChannel]) {
+                [self.requestWassr post:resizedImage message:postText.text channel:[targetChannel objectForKey:@"name_en"]];
+            } else {
+                [self.requestWassr post:resizedImage message:postText.text];
+            }
         }
     }
     
@@ -425,6 +438,8 @@
     // 本文入力欄を角丸にする。
     postText.layer.cornerRadius = 10;
     postText.clipsToBounds = TRUE;
+    
+    self.reachability = [Reachability reachabilityForInternetConnection];
 }
 
 /*

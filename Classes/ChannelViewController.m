@@ -147,9 +147,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [activityIndicator startAnimating];
-    [self loadChannelList];
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    if ([reachability currentReachabilityStatus] == NotReachable) {
+        activityIndicator.hidden = YES;
+        // ネットワークに接続できない場合はチャンネル一覧取得処理を実行しない。
+        UIAlertView *alert = [[UIAlertView alloc] 
+                              initWithTitle:@"" 
+                              message:@"ネットワークに接続できません。" 
+                              delegate:nil 
+                              cancelButtonTitle:@"OK" 
+                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    } else {
+        // Do any additional setup after loading the view from its nib.
+        [activityIndicator startAnimating];
+        [self loadChannelList];
+    }
 }
 
 - (void)viewDidUnload
