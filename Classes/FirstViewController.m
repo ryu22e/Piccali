@@ -111,6 +111,9 @@
     
     [postText setEditable:YES];
     
+    // 編集中の発言を保存しておく。
+    [userDefaults setValue:postText.text forKey:POST_TEXT];
+    
     NSInteger maxLength = [self getMaxLength];
     NSInteger postTextLength = [[postText text] length];
     // メッセージを入力している、かつ長さが最大文字列数以内の場合のみキャンセルボタンと投稿ボタンを有効にする。
@@ -435,6 +438,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    postText.text = [userDefaults stringForKey:POST_TEXT];
+    
     // 本文入力欄を角丸にする。
     postText.layer.cornerRadius = 10;
     postText.clipsToBounds = TRUE;
