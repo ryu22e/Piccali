@@ -12,7 +12,7 @@
 @protocol PiccaliPostDelegate <NSObject>
 @optional
 - (void)failedAuthorizedTwitter:(NSError *)error;
-- (void)failedToPostTwitpic:(ASIHTTPRequest *)request;
+- (void)failedToPostTwitpic:(NSError *)error;
 - (void)finishedToPostTwitpic:(ASIHTTPRequest *)request;
 - (void)finishedToPostTwitter:(NSString *)connectionIdentifier;
 - (void)failedToPostTwitter:(NSError *)error;
