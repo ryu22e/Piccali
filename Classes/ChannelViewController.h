@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChannelViewControllerDelegate.h"
 #import "ASIFormDataRequest.h"
+#import "Reachability.h"
 
 #define WASSR_CHANNEL_LIST_API_URL @"http://api.wassr.jp/channel_user/user_list.json?login_id=%@"
 
