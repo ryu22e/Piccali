@@ -425,8 +425,9 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [t_switch setOn:[userDefaults boolForKey:TWITTER_ENABLE]];
     [w_switch setOn:[userDefaults boolForKey:WASSR_ENABLE]];
-    [super viewWillAppear:animated];
     [self changeStatus];
+    
+    [super viewWillAppear:animated];
 }
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
