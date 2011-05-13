@@ -47,6 +47,7 @@
     BOOL hasNewImage;
     UIImage *postImage;
     Reachability *reachability;
+    BOOL keybordIsVisible;
 }
 @property (nonatomic, retain) UIImageView *finishedPostTwitter;
 @property (nonatomic, retain) UIImageView *finishedPostWassr;
