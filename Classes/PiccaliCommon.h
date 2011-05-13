@@ -21,6 +21,7 @@
 #define CONFIG_CACHED_XAUTH_ACCESS_TOKEN_KEY @"cached_xauth_access_token_key"
 
 #define POST_TEXT @"post_text"
+#define TARGET_CHANNEL @"target_channel"
 
 #define TWITTER_ENABLE @"twitter_enable"
 #define WASSR_ENABLE @"wassr_enable"
