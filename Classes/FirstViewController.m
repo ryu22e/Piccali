@@ -77,6 +77,21 @@
     }
 }
 
+- (void)setWassrChannel:(NSDictionary *)selectedChannel {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (!selectedChannel) {
+        self.targetChannel = nil;
+        wassrTarget.text = @"タイムライン";
+
+        [userDefaults removeObjectForKey:TARGET_CHANNEL];
+    } else {
+        self.targetChannel = selectedChannel;
+        wassrTarget.text = [NSString stringWithFormat:@"#%@", [self.targetChannel objectForKey:@"title"]];
+        
+        [userDefaults setValue:self.targetChannel forKey:TARGET_CHANNEL];
+    }
+}
+
 - (BOOL) hasTargetChannel {
     return self.targetChannel != nil;
 }
@@ -122,13 +137,40 @@
     
     NSInteger maxLength = [self getMaxLength];
     NSInteger postTextLength = [[postText text] length];
+    if (keybordIsVisible) {
+        // キーボードが表示されている場合はキャンセルボタンと投稿ボタンを無効にする。
+        [cancelButton setEnabled:NO];
+        [postButton setEnabled:NO];
+        [postButton setHighlighted:NO];
+    } else {
+        // メッセージを入力している、かつ長さが最大文字列数以内の場合のみキャンセルボタンと投稿ボタンを有効にする。
+        if (0 < postTextLength && postTextLength <= maxLength) {
+            [cancelButton setEnabled:YES];
+            [postButton setEnabled:YES];
+            [postButton setHighlighted:YES];
+        } else {
+            // Wassr投稿先をチャンネルにしている場合はキャンセルボタンを有効にする。
+            if ([self hasTargetChannel]) {
+                [cancelButton setEnabled:YES];
+            } else {
+                [cancelButton setEnabled:NO];
+            }
+            [postButton setEnabled:NO];
+            [postButton setHighlighted:NO];
+        }
+    }
     // キーボードが非表示、かつメッセージを入力している、かつ長さが最大文字列数以内の場合のみキャンセルボタンと投稿ボタンを有効にする。
     if (!keybordIsVisible && 0 < postTextLength && postTextLength <= maxLength) {
         [cancelButton setEnabled:YES];
         [postButton setEnabled:YES];
         [postButton setHighlighted:YES];
     } else {
-        [cancelButton setEnabled:NO];
+        // Wassr投稿先をチャンネルにしている場合はキャンセルボタンを有効にする。
+        if ([self hasTargetChannel]) {
+            [cancelButton setEnabled:YES];
+        } else {
+            [cancelButton setEnabled:NO];
+        }
         [postButton setEnabled:NO];
         [postButton setHighlighted:NO];
     }
@@ -286,6 +328,7 @@
 }
 
 - (IBAction)cancelClicked:(id)sender {
+    [self setWassrChannel:nil];
     postText.text = @"";
     [self changeStatus];
 }
@@ -370,11 +413,7 @@
     if (actionSheet == channelSheet) {
         switch (buttonIndex) {
             case 0:
-                self.targetChannel = nil;
-                wassrTarget.text = @"タイムライン";
-                
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                [userDefaults removeObjectForKey:TARGET_CHANNEL];
+                [self setWassrChannel:nil];
                 
                 [self changeStatus];
                 break;
@@ -392,11 +431,7 @@
 }
 
 - (void)channelSelected:(UIViewController *)controller channel:(NSDictionary *)selectedChannel {
-    self.targetChannel = selectedChannel;
-    wassrTarget.text = [NSString stringWithFormat:@"#%@", [self.targetChannel objectForKey:@"title"]];
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:self.targetChannel forKey:TARGET_CHANNEL];
+    [self setWassrChannel:selectedChannel];
     
     [self changeStatus];
 }
@@ -468,9 +503,9 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     postText.text = [userDefaults stringForKey:POST_TEXT];
     
-    self.targetChannel = [userDefaults objectForKey:TARGET_CHANNEL];
-    if (self.targetChannel) {
-        wassrTarget.text = [NSString stringWithFormat:@"#%@", [self.targetChannel objectForKey:@"title"]];
+    NSDictionary *dic = [userDefaults objectForKey:TARGET_CHANNEL];
+    if (dic) {
+        [self setWassrChannel:dic];
     }
     
     // 本文入力欄を角丸にする。
@@ -504,7 +539,6 @@
 
 
 - (void)dealloc {
-    [self.targetChannel release];
     [channelSheet release];
     [channelView release];
     [self.requestTwitter release];
