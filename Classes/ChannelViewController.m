@@ -144,9 +144,7 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     if ([reachability currentReachabilityStatus] == NotReachable) {
         activityIndicator.hidden = YES;
@@ -164,6 +162,12 @@
         [activityIndicator startAnimating];
         [self loadChannelList];
     }
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
 }
 
 - (void)viewDidUnload
