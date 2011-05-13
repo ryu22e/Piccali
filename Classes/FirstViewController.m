@@ -261,11 +261,11 @@
     keybordIsVisible = NO;
     [self changeStatus];
 }
-// UITextFieldのdelegate ここまで
 
 - (void)textViewDidChange:(UITextView *)textView {
     [self changeStatus];
 }
+// UITextFieldのdelegate ここまで
 
 - (IBAction)switchChanged:(id)textField {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
