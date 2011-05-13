@@ -207,9 +207,6 @@
 - (void)failedAuthorizedTwitter:(NSError *)error {
     // Twitterへの投稿に失敗したことを画面に通知する。
     [self notifyResultTwitter:YES];
-#ifdef DEBUG
-    
-#endif
 }
 
 - (void)failedToPostTwitpic:(NSError *)error {
