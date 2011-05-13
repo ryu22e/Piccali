@@ -238,7 +238,7 @@
 					<object class="IBUILabel" id="505312584">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{146, 82}, {126, 27}}</string>
+						<string key="NSFrame">{{146, 82}, {161, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="882066082"/>
@@ -250,7 +250,7 @@
 						<string key="IBUIText">タイムライン</string>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
-							<double key="NSSize">14</double>
+							<double key="NSSize">18</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<object class="NSColor" key="IBUITextColor">
