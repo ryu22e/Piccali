@@ -109,6 +109,12 @@
     // 「Wassr」が有効、かつOnの場合のみ「Wassr投稿先選択」を有効にする。
     [selectWassrTargetButton setEnabled:(w_switch.enabled && [w_switch isOn])];
     
+    if ([self hasTargetChannel]) {
+        wassrTarget.textColor = [UIColor blackColor];
+    } else {
+        wassrTarget.textColor = [UIColor whiteColor];
+    }
+    
     [postText setEditable:YES];
     
     // 編集中の発言を保存しておく。
@@ -369,6 +375,8 @@
                 
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                 [userDefaults removeObjectForKey:TARGET_CHANNEL];
+                
+                [self changeStatus];
                 break;
             case 1:
                 if (!channelView) {
@@ -389,6 +397,8 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:self.targetChannel forKey:TARGET_CHANNEL];
+    
+    [self changeStatus];
 }
 
 - (IBAction)cameraOrLibraryClicked:(id)sender {
