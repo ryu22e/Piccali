@@ -78,7 +78,7 @@
 }
 
 - (BOOL) hasTargetChannel {
-    return targetChannel != nil;
+    return self.targetChannel != nil;
 }
 
 // UIImageWriteToSavedPhotosAlbumのコールバック ここから
@@ -340,7 +340,7 @@
                 [self.requestWassr setDelegate:self];
             }
             if ([self hasTargetChannel]) {
-                [self.requestWassr post:resizedImage message:postText.text channel:[targetChannel objectForKey:@"name_en"]];
+                [self.requestWassr post:resizedImage message:postText.text channel:[self.targetChannel objectForKey:@"name_en"]];
             } else {
                 [self.requestWassr post:resizedImage message:postText.text];
             }
@@ -367,8 +367,11 @@
     if (actionSheet == channelSheet) {
         switch (buttonIndex) {
             case 0:
-                targetChannel = nil;
+                self.targetChannel = nil;
                 wassrTarget.text = @"タイムライン";
+                
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults removeObjectForKey:TARGET_CHANNEL];
                 break;
             case 1:
                 if (!channelView) {
@@ -383,9 +386,12 @@
     }
 }
 
-- (void) channelSelected:(UIViewController *)controller channel:(NSDictionary *)selectedChannel {
-    targetChannel = [selectedChannel retain];
-    wassrTarget.text = [NSString stringWithFormat:@"#%@", [targetChannel objectForKey:@"title"]];
+- (void)channelSelected:(UIViewController *)controller channel:(NSDictionary *)selectedChannel {
+    self.targetChannel = selectedChannel;
+    wassrTarget.text = [NSString stringWithFormat:@"#%@", [self.targetChannel objectForKey:@"title"]];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:self.targetChannel forKey:TARGET_CHANNEL];
 }
 
 - (IBAction)cameraOrLibraryClicked:(id)sender {
@@ -455,11 +461,18 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     postText.text = [userDefaults stringForKey:POST_TEXT];
     
+    self.targetChannel = [userDefaults objectForKey:TARGET_CHANNEL];
+    if (self.targetChannel) {
+        wassrTarget.text = [NSString stringWithFormat:@"#%@", [self.targetChannel objectForKey:@"title"]];
+    }
+    
     // 本文入力欄を角丸にする。
     postText.layer.cornerRadius = 10;
     postText.clipsToBounds = TRUE;
     
     self.reachability = [Reachability reachabilityForInternetConnection];
+    
+    [self changeStatus];
 }
 
 /*
@@ -484,7 +497,7 @@
 
 
 - (void)dealloc {
-    [targetChannel release];
+    [self.targetChannel release];
     [channelSheet release];
     [channelView release];
     [self.requestTwitter release];
