@@ -184,6 +184,7 @@
     // 初期化処理
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     w_usernameField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
+    w_usernameField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [w_usernameField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     [w_usernameField setAutocorrectionType:UITextAutocorrectionTypeNo];
     [w_usernameField setEnablesReturnKeyAutomatically:YES];
@@ -196,6 +197,7 @@
     w_usernameField.text = [userDefaults stringForKey:CONFIG_WASSR_USERNAME];
     
     w_passwordField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
+    w_passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [w_passwordField setEnablesReturnKeyAutomatically:YES];
     [w_passwordField setReturnKeyType:UIReturnKeyDone];
     [w_passwordField setSecureTextEntry:YES];

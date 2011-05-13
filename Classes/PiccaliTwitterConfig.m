@@ -242,6 +242,7 @@
     // 初期化処理
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     t_usernameField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
+    t_usernameField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [t_usernameField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     [t_usernameField setAutocorrectionType:UITextAutocorrectionTypeNo];
     [t_usernameField setEnablesReturnKeyAutomatically:YES];
@@ -254,6 +255,7 @@
     t_usernameField.text = [userDefaults stringForKey:CONFIG_TWITTER_USERNAME];
     
     t_passwordField = [[UITextField alloc] initWithFrame:CGRectMake(112, 12, 190, 24)];
+    t_passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [t_passwordField setEnablesReturnKeyAutomatically:YES];
     [t_passwordField setReturnKeyType:UIReturnKeyDone];
     [t_passwordField setSecureTextEntry:YES];
