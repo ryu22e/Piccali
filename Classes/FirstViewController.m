@@ -116,8 +116,8 @@
     
     NSInteger maxLength = [self getMaxLength];
     NSInteger postTextLength = [[postText text] length];
-    // メッセージを入力している、かつ長さが最大文字列数以内の場合のみキャンセルボタンと投稿ボタンを有効にする。
-    if (0 < postTextLength && postTextLength <= maxLength) {
+    // キーボードが非表示、かつメッセージを入力している、かつ長さが最大文字列数以内の場合のみキャンセルボタンと投稿ボタンを有効にする。
+    if (!keybordIsVisible && 0 < postTextLength && postTextLength <= maxLength) {
         [cancelButton setEnabled:YES];
         [postButton setEnabled:YES];
         [postButton setHighlighted:YES];
@@ -245,6 +245,7 @@
 }
 // PiccaliWassrのdelegate ここまで
 
+// UITextFieldのdelegate ここから
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
 	// リターンで編集を終了する。
     if ([text isEqualToString:@"\n"]) {
@@ -253,6 +254,17 @@
     }
 	return YES;
 }
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    keybordIsVisible = YES;
+    [self changeStatus];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    keybordIsVisible = NO;
+    [self changeStatus];
+}
+// UITextFieldのdelegate ここまで
 
 - (void)textViewDidChange:(UITextView *)textView {
     [self changeStatus];
