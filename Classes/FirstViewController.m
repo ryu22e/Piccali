@@ -201,13 +201,18 @@
     [errorPostWassr setHidden:YES];
 }
 
+- (void)resetTextAndChannel {
+    [self setWassrChannel:nil];
+    postText.text = @"";
+}
+
 - (void)cleanup {
     @synchronized(self) {        
         // 全ての投稿処理が終わっていれば、コントローラを初期状態に戻す。
         if (twitterIndicator.hidden && wassrIndicator.hidden) {
             // 結果がエラーになっている処理がなければ、投稿内容をクリアする。
             if (self.errorPostTwitter.hidden && self.errorPostWassr.hidden) {
-                postText.text = @"";
+                [self resetTextAndChannel];
                 self.postImage = nil;
                 imageView.image = nil;
             }
@@ -328,8 +333,7 @@
 }
 
 - (IBAction)cancelClicked:(id)sender {
-    [self setWassrChannel:nil];
-    postText.text = @"";
+    [self resetTextAndChannel];
     [self changeStatus];
 }
 
