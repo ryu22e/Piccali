@@ -409,7 +409,7 @@
                         destructiveButtonTitle:nil 
                         otherButtonTitles:@"タイムライン", @"チャンネル", nil];
     }
-    [channelSheet showInView:self.view];
+    [channelSheet showInView:self.view.window];
 }
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
